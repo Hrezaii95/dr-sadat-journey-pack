@@ -501,3 +501,18 @@ table.data td:first-child {
   body { background: #fff; color: #111; }
   .card { break-inside: avoid; }
 }
+
+/* ---- v3 additions: demo links + inline connection map (S1) ---- */
+.nav-demo { color: var(--gold) !important; font-weight: 600; }
+.hero-note { font-size: 12px; color: var(--faint); margin-top: 10px; }
+.mono { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+.pill-link { text-decoration: none; cursor: pointer; transition: transform .12s ease, box-shadow .12s ease; }
+.pill-link:hover { transform: translateY(-1px); text-decoration: none; box-shadow: 0 4px 14px rgba(224,178,58,.25); }
+a.spine-step, a.comp-card, a.pillar-card { text-decoration: none; color: inherit; cursor: pointer; }
+a.spine-step:hover, a.comp-card:hover, a.pillar-card:hover { text-decoration: none; }
+.comp-link, .pillar-link, .spine-link { position: relative; transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease; }
+.comp-link:hover, .pillar-link:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 6px 20px rgba(43,108,255,.18); }
+.spine-link:hover { border-color: var(--accent); }
+.comp-code { display: flex; align-items: center; gap: 4px; }
+.conn-svg-card { padding: 12px; overflow-x: auto; }
+.conn-svg-card svg { display: block; width: 100%; height: auto; min-width: 620px; }
