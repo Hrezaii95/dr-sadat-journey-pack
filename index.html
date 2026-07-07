@@ -1,528 +1,296 @@
-<!-- @dsCard group="Journey pack" viewport="1280x900" subtitle="Journey one-pager rebuilt on the clinical-infographic system" name="Journey pack" -->
-<!-- @startingPoint section="Screens" subtitle="Student-journey infographic one-pager (client-facing overview) — EN/FA, self-hosted, real graph + schematics" viewport="1280x900" -->
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-lang="en">
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Raouf Clinical Academy — Student journey</title>
-<link rel="icon" href="assets/favicon.svg">
-<!--
-  SELF-HOSTED BRAND FENCE — this page deliberately does NOT link ../../styles.css,
-  because that chains to tokens/fonts.css which @imports Fontshare + Google Fonts (CDN).
-  The brand rule for this artifact is: self-hosted only, zero external requests.
-  So the brand tokens are inlined below, Cartio (the one licensed font on disk) is loaded
-  via @font-face, and everything else uses the system stack. No CDN, ever.
--->
-<style>
-  /*
-    FONTS — self-hosted / system only. The licensed brand display faces (Clash Display,
-    General Sans) are CDN-only in tokens/fonts.css, which this page must not load. The one
-    on-disk face, Cartio-Trial.otf, is a TRIAL font that injects a "pdt" watermark glyph in
-    place of some punctuation — unacceptable on a client-facing artifact — so it is NOT used.
-    Per the brand fence ("if a web font isn't available locally, use the system stack"), the
-    display role falls back to a strong geometric-leaning system stack.
-  */
-
-  /* ── Brand tokens (inlined from tokens/{colors,effects}.css) ─────── */
-  :root {
-    --navy-900: #0B1E45; --navy-700: #10306B; --navy-500: #1C75BC;
-    --green-600: #1FA26B; --green-500: #2E8E54; --green-dark-surface: #35C98E;
-    --lime-500: #6CCB3E; --lime-300: #7FD46A;
-    --blue-400: #5D8AD4; --blue-200: #9BC0F2; --blue-150: #A9CDF0; --blue-250: #8FB4E4; --mint-200: #C4E8B4;
-    --mist: #E8ECEF; --white: #FFFFFF; --cloud: #F7F9FB; --pill: #EEF2F5;
-    --ink: #0F141A; --slate: #55616E; --gray-400: #8A95A1; --blue-gray-300: #9FB0C8;
-    --alarm: #DA4A54; --caution: #E39A3B; --in-range: #2E8E54;
-    /* AA text-contrast variants (D5 audit fix) — the base hues above fail 4.5:1 for small
-       text on light pill/mist/white surfaces (measured 2.0–3.6:1). Use these for text only. */
-    --caution-text: #8C5714; --alarm-text: #C0202C; --in-range-text: #256B3E;
-    --blue-400-text: #2F5FB8; --green-600-text: #147049; --gray-caption-text: #5C6874;
-    --gradient-convection: linear-gradient(135deg, #C4E8B4 0%, #A9CDF0 58%, #8FB4E4 100%);
-    --gradient-avatar-warm: linear-gradient(135deg, #C4E8B4, #8FB4E4);
-
-    --surface-page: var(--mist); --surface-card: var(--white); --surface-inset: var(--cloud);
-    --surface-pill: var(--pill);
-    --text-heading: var(--navy-700); --text-body: var(--ink); --text-muted: var(--slate); --text-caption: var(--gray-caption-text);
-    --link: var(--navy-700); --link-hover: var(--navy-500);
-    --border-hairline: rgba(16,48,107,0.06); --border-soft: rgba(16,48,107,0.10); --border-dashed: rgba(16,48,107,0.28);
-    --chart-1: var(--navy-700); --chart-2: var(--blue-400); --chart-3: var(--blue-200); --chart-grid: rgba(16,48,107,0.08);
-
-    --shadow-card: 0 24px 50px -30px rgba(11,30,69,0.28), 0 2px 8px rgba(11,30,69,0.04);
-    --shadow-float: 0 16px 34px -26px rgba(11,30,69,0.30);
-    --shadow-action: 0 16px 34px -22px rgba(16,48,107,0.60);
-    --shadow-dark-card: 0 22px 46px -24px rgba(11,30,69,0.50);
-    --ease-out: cubic-bezier(0.22, 1, 0.36, 1); --duration-fast: 140ms; --duration-base: 220ms;
-
-    /* Fonts: system stack only (no CDN, no watermarked trial font). Persian = Arabic-capable. */
-    --font-display: system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    --font-body: system-ui, "Segoe UI", Roboto, Arial, sans-serif;
-    --font-body-fa: "Vazirmatn", "Segoe UI", Tahoma, system-ui, sans-serif;
-  }
-
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; background: var(--surface-page); font-family: var(--font-body); color: var(--text-body);
-    -webkit-font-smoothing: antialiased;
-  }
-  html[data-lang="fa"] body { font-family: var(--font-body-fa); }
-  html[data-lang="fa"] { font-size: 16.5px; }
-  a { color: var(--link); text-decoration: none; }
-  a:hover { color: var(--link-hover); }
-
-  .wrap { max-width: 1240px; margin: 0 auto; padding: clamp(18px,3vw,34px) clamp(16px,4vw,44px) 80px; display: flex; flex-direction: column; gap: 18px; }
-
-  /* ── surfaces & type ─────────────────────────────────────────────── */
-  .card { background: var(--surface-card); border-radius: 28px; padding: 28px; box-shadow: var(--shadow-card); }
-  .card.dark { background: var(--navy-900); box-shadow: var(--shadow-dark-card); color: #EAF0F8; }
-  .overline { font-size: 11px; letter-spacing: 0.11em; text-transform: uppercase; font-weight: 600; color: var(--text-caption); }
-  html[data-lang="fa"] .overline { letter-spacing: 0; text-transform: none; font-weight: 700; }
-  .h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(22px,2.4vw,30px); text-transform: uppercase; letter-spacing: 0.01em; margin: 0; color: var(--text-heading); }
-  html[data-lang="fa"] .h2 { text-transform: none; font-family: var(--font-body-fa); letter-spacing: 0; }
-  .sub { font-size: 12.5px; color: var(--text-caption); }
-  .lede { font-size: 14.5px; line-height: 1.65; color: var(--text-muted); }
-  .tnum { font-variant-numeric: tabular-nums; }
-  bdi { unicode-bidi: isolate; }
-
-  .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; }
-
-  /* ── chips / badges ──────────────────────────────────────────────── */
-  .chip { display: inline-flex; align-items: center; gap: 7px; border-radius: 999px; padding: 8px 13px; font-size: 11.5px; font-weight: 600; background: var(--surface-pill); color: var(--text-muted); white-space: nowrap; }
-  .chip .dot { width: 7px; height: 7px; border-radius: 999px; flex: none; }
-  .chip.solid { background: var(--navy-700); color: #fff; }
-  .chip.dashed { background: transparent; border: 1.5px dashed var(--border-dashed); color: var(--text-caption); }
-  .badge { display: inline-flex; align-items: center; border-radius: 999px; padding: 4px 10px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.04em; }
-  html[data-lang="fa"] .badge { letter-spacing: 0; }
-  .b-real { background: rgba(108,203,62,0.16); color: var(--in-range-text); }
-  .b-stub { background: rgba(227,154,59,0.14); color: var(--caution-text); }
-  .b-panel { background: rgba(93,138,212,0.14); color: var(--blue-400-text); }
-  .b-gate { background: var(--navy-700); color: #fff; }
-  .b-gap { background: rgba(218,74,84,0.12); color: var(--alarm-text); }
-  .b-cross { background: var(--surface-pill); color: var(--text-muted); }
-
-  /* ── bento grids ─────────────────────────────────────────────────── */
-  .bento-hero { display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 18px; }
-  .grid-pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 16px; }
-  .grid-2 { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 18px; }
-  .grid-learn { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 16px; }
-  .grid-evidence { display: grid; grid-template-columns: 1fr 0.7fr; gap: 18px; align-items: stretch; }
-  /* Device Lab pillar spans two tracks on wide grids; it must NOT force a phantom
-     second track when the pillar grid collapses to one column. */
-  .pillar-wide { grid-column: span 2; }
-  @media (max-width: 940px) {
-    .bento-hero, .grid-2, .grid-evidence { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 620px) {
-    .pillar-wide { grid-column: auto; }
-    /* nav: let it wrap and drop the in-page section menu so the toggle+CTA never overflow */
-    .journey-nav { flex-wrap: wrap; row-gap: 10px; }
-    .journey-nav .nav-links { display: none; }
-    .journey-nav .nav-actions { margin-inline-start: auto; }
-  }
-
-  /* diagrams that must scroll on narrow screens rather than overflow the page */
-  .lane, .diagram-scroll { overflow-x: auto; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
-  .diagram-scroll img, .diagram-scroll svg { display: block; }
-  /* grid/flex items must be allowed to shrink below their content's intrinsic width so the
-     .diagram-scroll wrappers actually scroll instead of stretching the page (min-width:auto trap). */
-  .bento-hero > *, .grid-pillars > *, .grid-2 > *, .grid-learn > *, .grid-evidence > *,
-  .card, .lane, .diagram-scroll { min-width: 0; }
-  /* Scrollable schematic frames must be reachable by keyboard (WCAG 2.2 axe
-     scrollable-region-focusable) — tabindex+role/aria-label added in markup; this just
-     gives the focused region a visible ring consistent with the rest of the page. */
-  .diagram-scroll:focus-visible { outline: 3px solid var(--navy-500); outline-offset: 2px; border-radius: 12px; }
-
-  /* Nav in-page links: WCAG 2.2 SC 2.5.8 Target Size Minimum needs a ≥24px-tall hit
-     area. The visual line-height is unchanged — padding only enlarges the tap target. */
-  .nav-links a { display: inline-flex; align-items: center; padding-block: 7px; }
-
-  /* Directional "opens elsewhere" affordance — mirror under RTL so it still reads as
-     "forward/outbound" per RTL convention (D1 research brief). */
-  .arrow-glyph { display: inline-block; }
-  html[dir="rtl"] .arrow-glyph { transform: scaleX(-1); }
-
-  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
-  th { text-align: left; padding: 10px 12px; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; color: var(--text-caption); border-bottom: 1px solid var(--border-soft); white-space: nowrap; }
-  html[data-lang="fa"] th { letter-spacing: 0; text-transform: none; }
-  th:not(:first-child), td:not(:first-child) { text-align: center; }
-  td { padding: 9px 12px; color: var(--text-muted); border-bottom: 1px solid var(--border-hairline); }
-  td:first-child { color: var(--text-body); font-weight: 600; white-space: nowrap; }
-
-  /* schematic teaching insets */
-  .schematic-frame { background: var(--surface-inset); border-radius: 18px; padding: 14px; }
-  .schematic-frame img { width: 100%; height: auto; display: block; }
-  .teach-cap { font-size: 12px; line-height: 1.55; color: var(--text-muted); margin-top: 10px; }
-  .teach-cap b { color: var(--text-heading); font-weight: 700; }
-
-  /* interactive-only reveal — learner-paced, never autoplay */
-  .reveal-btn { appearance: none; cursor: pointer; border: 1.5px solid var(--border-soft); background: var(--surface-card); color: var(--navy-700); font: inherit; font-size: 12px; font-weight: 600; border-radius: 999px; padding: 8px 15px; display: inline-flex; align-items: center; gap: 8px; transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out); }
-  .reveal-btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-float); }
-  .reveal-btn:focus-visible { outline: 3px solid rgba(28,117,188,0.45); outline-offset: 2px; }
-
-  /* pillar card image chip */
-  .pillar-visual { width: 100%; height: 132px; border-radius: 14px; overflow: hidden; background: var(--surface-inset); display: flex; align-items: center; justify-content: center; }
-  .pillar-visual img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
-
-  .lang-toggle { display: inline-flex; background: var(--surface-pill); border-radius: 999px; padding: 3px; gap: 2px; }
-  .lang-toggle button { appearance: none; border: 0; cursor: pointer; background: transparent; font: inherit; font-size: 11.5px; font-weight: 700; color: var(--text-muted); border-radius: 999px; padding: 6px 12px; }
-  .lang-toggle button[aria-pressed="true"] { background: var(--navy-700); color: #fff; }
-
-  /* logical-property helpers so one markup mirrors under RTL */
-  .row { display: flex; align-items: center; gap: 10px; }
-  .stack { display: flex; flex-direction: column; }
-
-  /* Visible keyboard focus (WCAG 2.2 SC 2.4.7 / 2.4.11) — the browser default 1px
-     outline is easy to lose against the pill/card shapes and the two dark navy panels.
-     --navy-500 (#1C75BC) verified ≥3:1 non-text contrast on white, cloud, mist, and
-     the navy-900 dark-card background (see docs/program/research/d5-audit/a11y.md H4). */
-  a:focus-visible, button:focus-visible {
-    outline: 3px solid var(--navy-500);
-    outline-offset: 2px;
-    border-radius: 4px;
-  }
-
-  /* Language toggle — these must win over structural rules like `.diagram-scroll img`,
-     so they carry !important on the visibility switch (a pure show/hide concern). */
-  [data-fa] { display: none !important; }
-  html[data-lang="fa"] [data-en] { display: none !important; }
-  html[data-lang="fa"] [data-fa] { display: revert !important; }
-
-  @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; animation: none !important; }
-  }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Journey — Dr. Sadat Dialysis Education</title>
+  <meta name="description" content="Interactive dialysis HCP education — student journey, connection map, and live demo links. Vendor-neutral, on-premise, bilingual." />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<div class="wrap">
+  <header class="site-header">
+    <div class="wrap">
+      <div class="brand"><span class="brand-dot"></span> Raouf Renal Academy</div>
+      <nav class="site-nav" aria-label="Sections">
+        <a href="#journey" class="active">Journey</a>
+        <a href="#pillars">Pillars</a>
+        <a href="#matrix">Content</a>
+        <a href="#connection">Connection map</a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme">☀ Light</button>
+        <a href="https://hrezaii95.github.io/dialysis-education-platform/" target="_blank" rel="noopener noreferrer" class="nav-demo">Live demo ↗</a>
+      </nav>
+    </div>
+  </header>
 
-  <!-- ══ NAV ══ -->
-  <nav class="row journey-nav" data-screen-label="Journey nav" aria-label="Journey navigation"
-       style="gap:18px; padding:12px 20px; background:var(--surface-card); border-radius:28px; box-shadow:var(--shadow-card);">
-    <div class="row" style="gap:11px;">
-      <img src="assets/pulse-r-brand.svg" width="34" height="34" alt="Raouf Clinical Academy">
-      <span class="stack" style="line-height:1;">
-        <span style="font-family:var(--font-display); font-weight:700; font-size:16px; letter-spacing:0.02em; color:var(--navy-700);">RAOUF</span>
-        <span data-en style="font-size:7.5px; letter-spacing:0.24em; text-transform:uppercase; color:var(--green-600-text); font-weight:600; margin-top:3px;">Clinical Academy</span>
-        <span data-fa style="font-size:10px; color:var(--green-600-text); font-weight:700; margin-top:3px;">آکادمی بالینی</span>
-      </span>
-    </div>
-    <div class="row nav-links" style="gap:18px; margin-inline-start:10px; font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; font-weight:600; color:var(--text-muted); overflow-x:auto; scrollbar-width:none;">
-      <a href="#journey" data-en>Journey</a><a href="#journey" data-fa style="text-transform:none;">مسیر</a>
-      <a href="#learn" data-en>Anatomy</a><a href="#learn" data-fa style="text-transform:none;">آناتومی</a>
-      <a href="#evidence" data-en>Evidence</a><a href="#evidence" data-fa style="text-transform:none;">شواهد</a>
-      <a href="#map" data-en>Map</a><a href="#map" data-fa style="text-transform:none;">نقشه</a>
-    </div>
-    <div class="row nav-actions" style="margin-inline-start:auto; gap:12px;">
-      <div class="lang-toggle" role="group" aria-label="Language">
-        <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
-        <button type="button" data-set-lang="fa" aria-pressed="false">فا</button>
+  <main class="wrap">
+    <div class="hero">
+      <h1>Interactive dialysis education — student journey</h1>
+      <p class="sub">Prepared for Dr. Mahdavi · Hossein Rezaee Advisory · July 2026. Vendor-neutral, on-premise, bilingual (EN / Persian). Educational simulation only — device specs IFU-pending.</p>
+      <div class="hero-meta">
+        <a class="pill pill-gold pill-link" href="https://hrezaii95.github.io/dialysis-education-platform/" target="_blank" rel="noopener noreferrer">▶ Open the live demo</a>
+        <span class="pill">6 competencies · gate-by-doing</span>
+        <span class="pill">C1 + Device Lab + Case 1 heroes</span>
       </div>
-      <a href="https://hrezaii95.github.io/dialysis-education-platform/" class="row" style="gap:8px; background:var(--navy-700); color:#fff; border-radius:999px; padding:10px 18px; font-size:12px; font-weight:600; white-space:nowrap;">
-        <span data-en>Live demo</span><span data-fa>نسخه زنده</span>
-        <svg class="arrow-glyph" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" aria-hidden="true"><path d="M7 17 L17 7 M9 7 H17 V15"/></svg>
-      </a>
-    </div>
-  </nav>
-
-  <main id="main">
-  <!-- ══ HERO — bento (voice card + convection orb with Pulse-R) ══ -->
-  <section class="bento-hero" data-screen-label="Journey hero" aria-labelledby="hero-h">
-    <div class="card" style="border-radius:32px; padding:clamp(28px,3.4vw,44px); display:flex; flex-direction:column; justify-content:center;">
-      <span class="chip" style="align-self:flex-start; margin-bottom:20px;"><span class="dot" style="background:var(--lime-500);"></span><span data-en>Prepared for Dr. Mahdavi · July 2026</span><span data-fa>تهیه‌شده برای دکتر مهدوی · تیر ۱۴۰۵</span></span>
-      <h1 id="hero-h" style="font-family:var(--font-display); font-weight:600; font-size:clamp(30px,3.8vw,52px); line-height:1.0; letter-spacing:-0.01em; text-transform:uppercase; margin:0; color:var(--text-heading); text-wrap:balance;"><span data-en>The student journey, drawn to scale</span><span data-fa style="text-transform:none; font-family:var(--font-body-fa);">مسیر یادگیرنده، به‌مقیاس ترسیم‌شده</span></h1>
-      <p class="lede" style="max-width:500px; margin:16px 0 22px;"><span data-en>Interactive dialysis education — vendor-neutral, on-premise, bilingual EN / فارسی. Every colored element below is a real feature in the live demo, drawn with the platform's clinical-infographic grammar: real anatomy, real trial data, a real site graph.</span><span data-fa>آموزش تعاملی دیالیز — مستقل از سازنده، درون‌سازمانی، دوزبانه. هر عنصر رنگی، یک قابلیت واقعی در نسخهٔ زنده است؛ با گرامر اینفوگرافیک بالینی پلتفرم ترسیم شده: آناتومی واقعی، دادهٔ واقعی کارآزمایی، و گراف واقعی سایت.</span></p>
-      <div class="row" style="gap:10px; flex-wrap:wrap;">
-        <span class="badge b-real">● <span data-en>&nbsp;Fully built</span><span data-fa>&nbsp;کاملاً ساخته‌شده</span></span>
-        <span class="badge b-panel">● <span data-en>&nbsp;Integrated panel</span><span data-fa>&nbsp;پنل یکپارچه</span></span>
-        <span class="badge b-stub">● <span data-en>&nbsp;Preview / stub</span><span data-fa>&nbsp;پیش‌نمایش</span></span>
-        <span class="badge b-gate"><span data-en>Mastery gate</span><span data-fa>دروازهٔ تسلط</span></span>
-      </div>
-    </div>
-    <div class="card" style="border-radius:32px; position:relative; overflow:hidden; min-height:300px; display:flex; align-items:center; justify-content:center; background:var(--gradient-convection);">
-      <div style="position:relative; display:flex; flex-direction:column; align-items:center; gap:16px;">
-        <div style="position:relative; width:150px; height:150px; border-radius:999px; background:rgba(255,255,255,0.55); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center; box-shadow:0 20px 40px -24px rgba(11,30,69,0.5);">
-          <img src="assets/pulse-r-navy.svg" width="66" height="66" alt="Pulse-R mark">
-        </div>
-        <span class="chip solid"><span class="dot" style="background:var(--lime-500);"></span><span data-en>6 competencies · gate-by-doing</span><span data-fa>۶ شایستگی · عبور با انجام‌دادن</span></span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ PANEL 1 · SWIMLANE (kept, upgraded) ══ -->
-  <section class="card" id="journey" data-screen-label="Swimlane" style="padding:28px 30px;" aria-labelledby="journey-h">
-    <div class="sec-head">
-      <h2 class="h2" id="journey-h"><span data-en>One path, seven stops</span><span data-fa>یک مسیر، هفت ایستگاه</span></h2>
-      <span class="sub"><span data-en>Placement grants entry credit only — not mastery</span><span data-fa>آزمون تعیین سطح فقط اعتبار ورود می‌دهد — نه تسلط</span></span>
-    </div>
-    <div class="lane" style="position:relative; padding:26px 6px 4px;">
-      <div style="position:relative; min-width:860px;">
-        <div style="position:absolute; inset-inline:4% 4%; top:25px; height:3px; border-radius:999px; background:linear-gradient(90deg, var(--navy-700), var(--blue-400) 55%, var(--blue-200));"></div>
-        <span aria-hidden="true" style="position:absolute; inset-inline-start:57%; top:20.5px; width:12px; height:12px; border-radius:999px; background:var(--lime-500); box-shadow:0 0 0 4px rgba(108,203,62,0.22);"></span>
-        <div style="position:relative; display:flex; justify-content:space-between;">
-          <div class="stack" style="align-items:center; gap:8px; width:13%;">
-            <span style="width:52px; height:52px; border-radius:999px; background:var(--gradient-avatar-warm); box-shadow:var(--shadow-float);"></span>
-            <span style="font-size:11.5px; font-weight:700; color:var(--text-body);"><span data-en>Onboard</span><span data-fa>ورود</span></span>
-            <span class="sub" style="text-align:center;"><span data-en>Role + EN/FA</span><span data-fa>نقش + زبان</span></span>
-          </div>
-          <div class="stack" style="align-items:center; gap:8px; width:13%;">
-            <span style="width:52px; height:52px; border-radius:999px; background:var(--white); border:2.5px solid var(--blue-200); display:inline-flex; align-items:center; justify-content:center; box-shadow:var(--shadow-float); font-size:11px; font-weight:700; color:var(--navy-700);" class="tnum"><bdi>2′</bdi></span>
-            <span style="font-size:11.5px; font-weight:700; color:var(--text-body);"><span data-en>First impression</span><span data-fa>نخستین برخورد</span></span>
-            <span class="sub" style="text-align:center;"><span data-en>convection + IDH</span><span data-fa>همرفت + افت فشار</span></span>
-          </div>
-          <a href="https://hrezaii95.github.io/dialysis-education-platform/placement" class="stack" style="align-items:center; gap:8px; width:13%;">
-            <span style="width:52px; height:52px; border-radius:999px; background:var(--white); border:2.5px solid var(--lime-500); display:inline-flex; align-items:center; justify-content:center; box-shadow:var(--shadow-float); font-size:11px; font-weight:700; color:var(--navy-700);"><bdi>7Q</bdi></span>
-            <span style="font-size:11.5px; font-weight:700; color:var(--navy-700);"><span data-en>Placement <span class="arrow-glyph">↗</span></span><span data-fa>تعیین سطح <span class="arrow-glyph">↗</span></span></span>
-            <span class="sub" style="text-align:center;"><span data-en>~4 min · entry credit</span><span data-fa>~۴ دقیقه · اعتبار ورود</span></span>
-          </a>
-          <a href="https://hrezaii95.github.io/dialysis-education-platform/my-path" class="stack" style="align-items:center; gap:8px; width:13%;">
-            <span style="width:52px; height:52px; border-radius:999px; background:var(--navy-700); display:inline-flex; align-items:center; justify-content:center; box-shadow:var(--shadow-action);"><img src="assets/pulse-r-white.svg" width="30" height="30" alt=""></span>
-            <span style="font-size:11.5px; font-weight:700; color:var(--navy-700);"><span data-en>My Path <span class="arrow-glyph">↗</span></span><span data-fa>مسیر من <span class="arrow-glyph">↗</span></span></span>
-            <span class="sub" style="text-align:center;"><bdi>C1–C6</bdi> · <span data-en>depth dial</span><span data-fa>درجهٔ عمق</span></span>
-          </a>
-          <div class="stack" style="align-items:center; gap:8px; width:17%;">
-            <span style="height:52px; border-radius:999px; background:var(--pill); display:inline-flex; align-items:center; padding:0 16px; font-size:10px; font-weight:700; color:var(--slate); letter-spacing:0.04em; white-space:nowrap;"><bdi>R → W → D → R → G</bdi></span>
-            <span style="font-size:11.5px; font-weight:700; color:var(--text-body);"><span data-en>Per-C loop</span><span data-fa>حلقهٔ هر شایستگی</span></span>
-            <span class="sub" style="text-align:center;"><span data-en>Read · Watch · Do · Retain · Gate</span><span data-fa>خواندن · دیدن · انجام · تثبیت · دروازه</span></span>
-          </div>
-          <a href="https://hrezaii95.github.io/dialysis-education-platform/assessment" class="stack" style="align-items:center; gap:8px; width:13%;">
-            <span style="width:52px; height:52px; border-radius:999px; background:var(--white); border:2.5px solid var(--navy-700); display:inline-flex; align-items:center; justify-content:center; box-shadow:var(--shadow-float); font-size:11px; font-weight:700; color:var(--navy-700);"><bdi>8Q</bdi></span>
-            <span style="font-size:11.5px; font-weight:700; color:var(--navy-700);"><span data-en>Assess <span class="arrow-glyph">↗</span></span><span data-fa>ارزیابی <span class="arrow-glyph">↗</span></span></span>
-            <span class="sub tnum" style="text-align:center;"><bdi>≥80%</bdi> <span data-en>pass</span><span data-fa>قبولی</span></span>
-          </a>
-          <div class="stack" style="align-items:center; gap:8px; width:13%;">
-            <span style="width:52px; height:52px; border-radius:999px; background:conic-gradient(var(--lime-500) 100%, var(--border-soft) 0); display:inline-flex; align-items:center; justify-content:center;"><span style="width:40px; height:40px; border-radius:999px; background:var(--white); display:inline-flex; align-items:center; justify-content:center; font-size:15px; color:var(--in-range-text); font-weight:700;">✓</span></span>
-            <span style="font-size:11.5px; font-weight:700; color:var(--text-body);"><span data-en>Credential</span><span data-fa>گواهی</span></span>
-            <span class="sub" style="text-align:center;"><span data-en>certificate</span><span data-fa>گواهینامه</span></span>
-          </div>
-        </div>
-      </div>
+      <p class="hero-note">Every coloured item below links straight to that feature in the live demo. All links verified working on <span class="mono">2026-07-06</span>.</p>
     </div>
 
-    <!-- competency spine cards (kept) -->
-    <div style="margin-top:26px; padding-top:22px; border-top:1px solid var(--border-hairline);">
-      <div class="overline" style="margin-bottom:14px;"><span data-en>The competency spine — click to open its hub</span><span data-fa>ستون شایستگی‌ها — برای بازکردن هاب کلیک کنید</span></div>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(168px,1fr)); gap:12px;">
-        <a href="https://hrezaii95.github.io/dialysis-education-platform/learn/c1" class="stack" style="background:var(--surface-inset); border-radius:16px; padding:14px 16px; gap:8px;">
-          <div class="row" style="justify-content:space-between;"><bdi style="font-weight:700; font-size:13px; color:var(--navy-700);">C1 <span class="arrow-glyph">↗</span></bdi><span class="badge b-real"><span data-en>Real</span><span data-fa>واقعی</span></span></div>
-          <span style="font-size:12px; color:var(--slate); line-height:1.4;"><span data-en>Understand therapy · guided course</span><span data-fa>درک درمان · دورهٔ راهنمایی‌شده</span></span>
-        </a>
-        <a href="https://hrezaii95.github.io/dialysis-education-platform/learn/c2" class="stack" style="background:var(--surface-inset); border-radius:16px; padding:14px 16px; gap:8px;">
-          <div class="row" style="justify-content:space-between;"><bdi style="font-weight:700; font-size:13px; color:var(--navy-700);">C2 <span class="arrow-glyph">↗</span></bdi><span class="badge b-stub"><span data-en>Stub</span><span data-fa>خام</span></span></div>
-          <span style="font-size:12px; color:var(--slate); line-height:1.4;"><span data-en>Vascular access · flipbook preview</span><span data-fa>دسترسی عروقی · پیش‌نمایش فلیپ‌بوک</span></span>
-        </a>
-        <a href="https://hrezaii95.github.io/dialysis-education-platform/learn/c3" class="stack" style="background:var(--surface-inset); border-radius:16px; padding:14px 16px; gap:8px; outline:2px solid var(--navy-500); outline-offset:-2px;">
-          <div class="row" style="justify-content:space-between;"><bdi style="font-weight:700; font-size:13px; color:var(--navy-700);">C3 <span class="arrow-glyph">↗</span></bdi><span class="badge b-real"><span data-en>Real · hero</span><span data-fa>واقعی · شاخص</span></span></div>
-          <span style="font-size:12px; color:var(--slate); line-height:1.4;"><span data-en>Operate the device · Device Lab</span><span data-fa>کار با دستگاه · آزمایشگاه دستگاه</span></span>
-        </a>
-        <a href="https://hrezaii95.github.io/dialysis-education-platform/learn/c4" class="stack" style="background:var(--surface-inset); border-radius:16px; padding:14px 16px; gap:8px;">
-          <div class="row" style="justify-content:space-between;"><bdi style="font-weight:700; font-size:13px; color:var(--navy-700);">C4 <span class="arrow-glyph">↗</span></bdi><span class="badge b-panel"><span data-en>Panel</span><span data-fa>پنل</span></span></div>
-          <span style="font-size:12px; color:var(--slate); line-height:1.4;"><span data-en>HDF Rx + water · circuit panel</span><span data-fa>نسخهٔ HDF + آب · پنل مدار</span></span>
-        </a>
-        <a href="https://hrezaii95.github.io/dialysis-education-platform/learn/c5" class="stack" style="background:var(--surface-inset); border-radius:16px; padding:14px 16px; gap:8px;">
-          <div class="row" style="justify-content:space-between;"><bdi style="font-weight:700; font-size:13px; color:var(--navy-700);">C5 <span class="arrow-glyph">↗</span></bdi><span class="badge b-real"><span data-en>Real · Case 1</span><span data-fa>واقعی · مورد ۱</span></span></div>
-          <span style="font-size:12px; color:var(--slate); line-height:1.4;"><span data-en>Complications · branching sims</span><span data-fa>عوارض · شبیه‌سازی شاخه‌ای</span></span>
-        </a>
-        <a href="https://hrezaii95.github.io/dialysis-education-platform/learn/c6" class="stack" style="background:var(--surface-inset); border-radius:16px; padding:14px 16px; gap:8px;">
-          <div class="row" style="justify-content:space-between;"><bdi style="font-weight:700; font-size:13px; color:var(--navy-700);">C6 <span class="arrow-glyph">↗</span></bdi><span class="badge b-real"><span data-en>Real</span><span data-fa>واقعی</span></span></div>
-          <span style="font-size:12px; color:var(--slate); line-height:1.4;"><span data-en>Evidence · cited trial explorer</span><span data-fa>شواهد · کاوشگر کارآزمایی</span></span>
-        </a>
-      </div>
-      <div class="row" style="margin-top:14px; font-size:11px; color:var(--text-caption); flex-wrap:wrap; gap:8px;">
-        <span style="font-weight:600;"><span data-en>Prerequisites:</span><span data-fa>پیش‌نیازها:</span></span>
-        <span class="chip" style="padding:5px 11px; font-size:10.5px;"><bdi>C1 → C2, C6</bdi></span>
-        <span class="chip" style="padding:5px 11px; font-size:10.5px;"><bdi>C2 → C3</bdi></span>
-        <span class="chip" style="padding:5px 11px; font-size:10.5px;"><bdi>C3 → C4, C5</bdi></span>
-        <span class="chip" style="padding:5px 11px; font-size:10.5px;"><bdi>C4 needs C1 + C3</bdi></span>
-      </div>
+    <div class="legend" aria-label="Build status legend">
+      <span><i class="swatch swatch-real"></i> Fully built (demo)</span>
+      <span><i class="swatch swatch-panel"></i> Integrated panel</span>
+      <span><i class="swatch swatch-stub"></i> Preview / stub</span>
+      <span><i class="swatch swatch-gate"></i> Mastery gate</span>
     </div>
-  </section>
 
-  <!-- ══ PANEL 2 · WHAT YOU'LL LEARN — anatomy schematic strip ══ -->
-  <section id="learn" data-screen-label="Anatomy strip" aria-labelledby="learn-h">
-    <div class="sec-head" style="padding-inline:4px;">
-      <h2 class="h2" id="learn-h"><span data-en>What you'll actually learn</span><span data-fa>آنچه واقعاً یاد می‌گیرید</span></h2>
-      <span class="sub"><span data-en>real schematics from the course — not stock art</span><span data-fa>شماتیک‌های واقعی دوره — نه تصویر آماده</span></span>
-    </div>
-    <div class="grid-learn">
+    <!-- Panel 1: Journey -->
+    <section id="journey">
+      <div class="section-label">Panel 1</div>
+      <h2>Student journey swimlane</h2>
+      <p class="section-lead">Gate-by-doing, not click-through. Placement grants entry credit only — not mastery. Each competency requires demonstrated performance plus spaced retention.</p>
+
       <div class="card">
-        <div class="row" style="justify-content:space-between; margin-bottom:10px;">
-          <span class="overline"><bdi>C1</bdi> · <span data-en>What dialysis replaces</span><span data-fa>دیالیز جایگزین چیست</span></span>
-          <span class="badge b-real"><span data-en>Real</span><span data-fa>واقعی</span></span>
+        <div class="spine">
+          <div class="spine-step"><strong>Onboard</strong><span>Role + EN/FA</span></div>
+          <span class="spine-arrow">→</span>
+          <div class="spine-step"><strong>First impression</strong><span>2 min · convection + IDH</span></div>
+          <span class="spine-arrow">→</span>
+          <a class="spine-step spine-link" href="https://hrezaii95.github.io/dialysis-education-platform/placement" target="_blank" rel="noopener noreferrer"><strong>Placement ↗</strong><span>7 questions · ~4 min</span></a>
+          <span class="spine-arrow">→</span>
+          <a class="spine-step spine-link" href="https://hrezaii95.github.io/dialysis-education-platform/my-path" target="_blank" rel="noopener noreferrer"><strong>My Path ↗</strong><span>C1–C6 · depth dial</span></a>
+          <span class="spine-arrow">→</span>
+          <div class="spine-step"><strong>Per-C loop</strong><span>Read → Watch → Do → Retain → Gate</span></div>
+          <span class="spine-arrow">→</span>
+          <a class="spine-step spine-link" href="https://hrezaii95.github.io/dialysis-education-platform/assessment" target="_blank" rel="noopener noreferrer"><strong>Assess ↗</strong><span>8Q · 80% pass</span></a>
+          <span class="spine-arrow">→</span>
+          <div class="spine-step"><strong>Credential</strong><span>Certificate</span></div>
         </div>
-        <div class="schematic-frame diagram-scroll" tabindex="0" role="region" aria-label="Nephron schematic, scrollable">
-          <img src="assets/nephron.svg" alt="Nephron schematic — the kidney's filtration unit, showing glomerulus, tubule, loop of Henle and collecting duct" width="1000" height="680" loading="lazy" style="min-width:520px;">
-        </div>
-        <p class="teach-cap"><span data-en><b>The nephron</b> is the filtering unit dialysis stands in for. C1 orients learners on where clearance normally happens before the therapy is introduced.</span><span data-fa><b>نفرون</b> واحد فیلترکنندهٔ کلیه است که دیالیز جای آن را می‌گیرد. C1 پیش از معرفی درمان، یادگیرنده را با محل طبیعی پاکسازی آشنا می‌کند.</span></p>
-      </div>
-      <div class="card">
-        <div class="row" style="justify-content:space-between; margin-bottom:10px;">
-          <span class="overline"><bdi>C2</bdi> · <span data-en>Reaching the bloodstream</span><span data-fa>دسترسی به جریان خون</span></span>
-          <span class="badge b-stub"><span data-en>Stub</span><span data-fa>خام</span></span>
-        </div>
-        <div class="schematic-frame diagram-scroll" tabindex="0" role="region" aria-label="Vascular access schematic, scrollable">
-          <img src="assets/vascular-access.svg" alt="Three vascular access types: AV fistula, AV graft, and central venous catheter, each with typical blood flow and relative risk" width="1120" height="440" loading="lazy" style="min-width:640px;">
-        </div>
-        <p class="teach-cap"><span data-en><b>Fistula vs graft vs CVC</b> — flow reaches <bdi class="tnum">300–500 mL/min</bdi> on a mature fistula, the lowest-risk access <span class="chip" style="padding:3px 9px; font-size:9.5px; vertical-align:middle;">Representative range — not device-specific</span>. The trade-offs are spatial, so they're drawn, not tabulated.</span><span data-fa><b>فیستول در برابر گرافت و کاتتر</b> — جریان روی فیستول رسیده به <bdi class="tnum">۳۰۰–۵۰۰ mL/min</bdi> می‌رسد، کم‌خطرترین دسترسی <span class="chip" style="padding:3px 9px; font-size:9.5px; vertical-align:middle;">بازهٔ نمونه — غیراختصاصی به دستگاه</span>. مصالحه‌ها فضایی‌اند، پس ترسیم شده‌اند نه جدول‌بندی.</span></p>
-      </div>
-      <div class="card">
-        <div class="row" style="justify-content:space-between; margin-bottom:10px;">
-          <span class="overline"><bdi>C4</bdi> · <span data-en>Why HDF clears more</span><span data-fa>چرا HDF بیشتر پاک می‌کند</span></span>
-          <span class="badge b-panel"><span data-en>Panel</span><span data-fa>پنل</span></span>
-        </div>
-        <div class="schematic-frame diagram-scroll" tabindex="0" role="region" aria-label="Membrane pore cross-section schematic, scrollable">
-          <img src="assets/membrane-pore.svg" alt="Membrane pore cross-section: small and middle molecules cross by diffusion and convection; albumin and red cells are blocked at the wall" width="720" height="480" loading="lazy" style="min-width:520px;">
-        </div>
-        <p class="teach-cap"><span data-en><b>Pore size sets the cutoff.</b> Urea crosses by diffusion; <bdi>β2-microglobulin</bdi> only clears with the convection sweep HDF adds — the mechanism behind the evidence below.</span><span data-fa><b>اندازهٔ منفذ حد جداسازی را تعیین می‌کند.</b> اوره با انتشار عبور می‌کند؛ <bdi>β2-microglobulin</bdi> فقط با جاروب همرفتی که HDF می‌افزاید پاک می‌شود — سازوکار پشت شواهد زیر.</span></p>
-      </div>
-    </div>
-  </section>
 
-  <!-- ══ PANEL 3 · PILLARS — bento, Device Lab shows the dialyzer ══ -->
-  <section aria-labelledby="pillars-h">
-    <div class="sec-head" id="pillars" style="padding-inline:4px;">
-      <h2 class="h2" id="pillars-h"><span data-en>Where the doing happens</span><span data-fa>جایی که انجام‌دادن رخ می‌دهد</span></h2>
-      <span class="sub"><span data-en>inside each competency hub — not separate tabs</span><span data-fa>درون هر هاب شایستگی — نه زبانه‌های جدا</span></span>
-    </div>
-    <div class="grid-pillars" data-screen-label="Pillars">
-      <!-- Device Lab — spans wider, shows the dialyzer cross-section -->
-      <a class="card pillar-wide" href="https://hrezaii95.github.io/dialysis-education-platform/devices" style="display:flex; flex-direction:column; gap:14px;">
-        <div class="row" style="justify-content:space-between;">
-          <span class="overline"><span data-en>Device Lab <span class="arrow-glyph">↗</span></span><span data-fa>آزمایشگاه دستگاه <span class="arrow-glyph">↗</span></span></span>
-          <span class="badge b-real"><bdi>Hero · C3 C4</bdi></span>
+        <p style="font-size:12px;color:var(--faint);margin:16px 0 8px">C1–C6 competency spine (prerequisite-gated) — click a competency to open its hub in the demo</p>
+        <div class="comp-grid">
+          <a class="comp-card real comp-link" href="https://hrezaii95.github.io/dialysis-education-platform/learn/c1" target="_blank" rel="noopener noreferrer"><div class="comp-code">C1 ↗</div><div class="comp-status real">Real</div><div class="comp-title">Understand therapy · guided course</div><div class="kt-bar"><span class="kt-d" style="width:80%"></span><span class="kt-p" style="width:5%"></span><span class="kt-c" style="width:15%"></span></div></a>
+          <a class="comp-card stub comp-link" href="https://hrezaii95.github.io/dialysis-education-platform/learn/c2" target="_blank" rel="noopener noreferrer"><div class="comp-code">C2 ↗</div><div class="comp-status stub">Stub</div><div class="comp-title">Vascular access · flipbook preview</div><div class="kt-bar"><span class="kt-d" style="width:30%"></span><span class="kt-p" style="width:55%"></span><span class="kt-c" style="width:15%"></span></div></a>
+          <a class="comp-card real comp-link" href="https://hrezaii95.github.io/dialysis-education-platform/learn/c3" target="_blank" rel="noopener noreferrer"><div class="comp-code">C3 ↗</div><div class="comp-status real">Real</div><div class="comp-title">Operate the device · Device Lab hero</div><div class="kt-bar"><span class="kt-d" style="width:15%"></span><span class="kt-p" style="width:80%"></span><span class="kt-c" style="width:5%"></span></div></a>
+          <a class="comp-card panel comp-link" href="https://hrezaii95.github.io/dialysis-education-platform/learn/c4" target="_blank" rel="noopener noreferrer"><div class="comp-code">C4 ↗</div><div class="comp-status panel">Panel</div><div class="comp-title">HDF Rx + water · circuit panel</div><div class="kt-bar"><span class="kt-d" style="width:35%"></span><span class="kt-p" style="width:35%"></span><span class="kt-c" style="width:30%"></span></div></a>
+          <a class="comp-card real comp-link" href="https://hrezaii95.github.io/dialysis-education-platform/learn/c5" target="_blank" rel="noopener noreferrer"><div class="comp-code">C5 ↗</div><div class="comp-status real">Real</div><div class="comp-title">Complications · Case 1 full</div><div class="kt-bar"><span class="kt-d" style="width:15%"></span><span class="kt-p" style="width:25%"></span><span class="kt-c" style="width:60%"></span></div></a>
+          <a class="comp-card real comp-link" href="https://hrezaii95.github.io/dialysis-education-platform/learn/c6" target="_blank" rel="noopener noreferrer"><div class="comp-code">C6 ↗</div><div class="comp-status real">Real</div><div class="comp-title">Evidence · cited trial explorer</div><div class="kt-bar"><span class="kt-d" style="width:10%"></span><span class="kt-p" style="width:0%"></span><span class="kt-c" style="width:90%"></span></div></a>
         </div>
-        <div class="schematic-frame diagram-scroll" tabindex="0" role="region" aria-label="Hemodialyzer cross-section schematic, scrollable">
-          <img src="assets/dialyzer-xsection.svg" alt="Hemodialyzer counter-current cross-section: blood through the fibre lumens at Qb 400, dialysate around them at Qd 500 in the opposite direction" width="960" height="620" loading="lazy" style="min-width:640px;">
-        </div>
-        <div style="font-family:var(--font-display); font-weight:600; font-size:18px; text-transform:uppercase; color:var(--text-heading);"><span data-en>Operate the 5008 for online-HDF</span><span data-fa style="text-transform:none; font-family:var(--font-body-fa);">کار با ۵۰۰۸ برای HDF آنلاین</span></div>
-        <div style="font-size:12.5px; line-height:1.6; color:var(--text-muted);"><span data-en>3D setup, prime, prescribe to <bdi class="tnum">≥23 L</bdi> convection, timed alarms. The cross-section teaches <b>why counter-current flow</b> maximizes the diffusion gradient. Educational model — device specs IFU-pending.</span><span data-fa>راه‌اندازی سه‌بعدی، پرایم، تجویز تا <bdi class="tnum">≥۲۳ L</bdi> همرفت، هشدارهای زمان‌بندی‌شده. برش عرضی <b>چرایی جریان متقابل</b> را آموزش می‌دهد. مدل آموزشی — مشخصات دستگاه در انتظار IFU.</span></div>
-      </a>
-      <a class="card" href="https://hrezaii95.github.io/dialysis-education-platform/simulator?tab=cases" style="display:flex; flex-direction:column; gap:12px;">
-        <div class="row" style="justify-content:space-between;">
-          <svg width="64" height="42" viewBox="0 0 120 60" fill="none" aria-hidden="true"><path d="M0 22 C 24 20, 36 24, 48 26 C 60 28, 66 44, 76 46 C 88 48, 100 34, 120 30" stroke="#10306B" stroke-width="2.5"/><circle cx="66" cy="38" r="5" fill="#DA4A54"/><circle cx="82" cy="46" r="5" fill="#6CCB3E"/></svg>
-          <span class="badge b-real"><bdi>Case 1 hero · C5</bdi></span>
-        </div>
-        <div style="font-family:var(--font-display); font-weight:600; font-size:17px; text-transform:uppercase; color:var(--text-heading);"><span data-en>Patient Cases <span class="arrow-glyph">↗</span></span><span data-fa style="text-transform:none; font-family:var(--font-body-fa);">موارد بیمار <span class="arrow-glyph">↗</span></span></div>
-        <div style="font-size:12.5px; line-height:1.6; color:var(--text-muted);"><span data-en>Branching crisis sims with a vitals trajectory and cited debrief. Case 1 (hypotension) full; 2–4 preview.</span><span data-fa>شبیه‌سازی بحران شاخه‌ای با روند علائم حیاتی و جمع‌بندی مستند. مورد ۱ (افت فشار) کامل؛ ۲ تا ۴ پیش‌نمایش.</span></div>
-      </a>
-      <a class="card" href="https://hrezaii95.github.io/dialysis-education-platform/convince" style="display:flex; flex-direction:column; gap:12px;">
-        <div class="row" style="justify-content:space-between;">
-          <div class="row" style="align-items:flex-end; gap:5px; height:42px;"><span style="width:12px; height:55%; border-radius:4px 4px 2px 2px; background:var(--chart-2);"></span><span style="width:12px; height:90%; border-radius:4px 4px 2px 2px; background:var(--chart-1);"></span><span style="width:12px; height:38%; border-radius:4px 4px 2px 2px; background:var(--chart-3);"></span></div>
-          <span class="badge b-real"><bdi>C6</bdi></span>
-        </div>
-        <div style="font-family:var(--font-display); font-weight:600; font-size:17px; text-transform:uppercase; color:var(--text-heading);"><span data-en>Evidence & Outcomes <span class="arrow-glyph">↗</span></span><span data-fa style="text-transform:none; font-family:var(--font-body-fa);">شواهد و پیامدها <span class="arrow-glyph">↗</span></span></div>
-        <div style="font-size:12.5px; line-height:1.6; color:var(--text-muted);"><span data-en>Honest trial arc — CONVINCE, ESHOL, and the nulls (CONTRAST, Turkish). Dose–response framing.</span><span data-fa>روند صادقانهٔ کارآزمایی — CONVINCE، ESHOL و نتایج منفی (CONTRAST، ترکیه). چارچوب دوز-پاسخ.</span></div>
-      </a>
-      <a class="card" href="https://hrezaii95.github.io/dialysis-education-platform/daily-5" style="display:flex; flex-direction:column; gap:12px;">
-        <div class="row" style="justify-content:space-between;">
-          <div class="row" style="gap:0;"><span style="width:30px; height:38px; border-radius:8px; background:var(--navy-700); transform:rotate(-8deg);"></span><span style="width:30px; height:38px; border-radius:8px; background:var(--blue-400); margin-inline-start:-14px; transform:rotate(2deg);"></span><span style="width:30px; height:38px; border-radius:8px; background:var(--mint-200); margin-inline-start:-14px; transform:rotate(10deg);"></span></div>
-          <span class="badge b-real"><bdi>All C1–C6</bdi></span>
-        </div>
-        <div style="font-family:var(--font-display); font-weight:600; font-size:17px; text-transform:uppercase; color:var(--text-heading);"><span data-en>Daily-5 retention <span class="arrow-glyph">↗</span></span><span data-fa style="text-transform:none; font-family:var(--font-body-fa);">تثبیت روزانهٔ ۵ <span class="arrow-glyph">↗</span></span></div>
-        <div style="font-size:12.5px; line-height:1.6; color:var(--text-muted);"><span data-en>12-card spaced deck across all six competencies. Hard mastery needs retention across 2+ sessions.</span><span data-fa>دستهٔ ۱۲ کارتی با فاصله‌گذاری در هر شش شایستگی. تسلط واقعی نیازمند تثبیت در ۲+ جلسه است.</span></div>
-      </a>
-    </div>
-  </section>
 
-  <!-- ══ PANEL 4 · EVIDENCE — dark instrument panel (the argued-for arm) ══ -->
-  <section id="evidence" data-screen-label="Evidence panel" aria-labelledby="evidence-h">
-    <div class="grid-evidence">
-      <div class="card dark" style="display:flex; flex-direction:column; gap:16px;">
-        <div class="sec-head" style="margin-bottom:0;">
-          <h2 class="h2" id="evidence-h" style="color:#fff;"><span data-en>The argument, drawn honestly</span><span data-fa style="font-family:var(--font-body-fa);">استدلال، صادقانه ترسیم‌شده</span></h2>
-        </div>
-        <p style="font-size:13px; line-height:1.65; color:#9FB0C8; margin:0;"><span data-en>The clearance advantage is real and size-dependent — end-labeled bars, position/length encoding, every number citation-gated. Conventional HD adds no convective volume; high-volume HDF targets <bdi class="tnum">≥23 L</bdi> per session <span class="chip" style="padding:3px 9px; font-size:9.5px; background:rgba(255,255,255,0.12); color:#EAF0F8; vertical-align:middle;">CONVINCE 2023 · PMID 37326323</span>.</span><span data-fa>مزیت پاکسازی واقعی و وابسته به اندازه است — میله‌های برچسب‌دار، کدگذاری موقعیت/طول، هر عدد مستند. HD معمول حجم همرفتی نمی‌افزاید؛ HDF پرحجم هدف <bdi class="tnum">≥۲۳ L</bdi> در هر جلسه دارد <span class="chip" style="padding:3px 9px; font-size:9.5px; background:rgba(255,255,255,0.12); color:#EAF0F8; vertical-align:middle;">CONVINCE 2023 · PMID 37326323</span>.</span></p>
-        <div style="background:var(--white); border-radius:16px; padding:12px 8px;" class="diagram-scroll" tabindex="0" role="region" aria-label="Convection volume comparison bars, scrollable">
-          <img data-en src="assets/compare-en.svg" alt="Comparison bars: HD delivers 0 L convection per session, HV-HDF 23 L. Source CONVINCE 2023, PMID 37326323." width="520" height="190" style="width:100%; height:auto; min-width:360px;">
-          <img data-fa src="assets/compare-fa.svg" alt="میله‌های مقایسه: HD صفر لیتر همرفت، HV-HDF بیست‌وسه لیتر. منبع: CONVINCE 2023, PMID 37326323." width="520" height="190" style="width:100%; height:auto; min-width:360px;">
+        <p style="font-size:11px;color:var(--faint);margin-top:12px">Prerequisites: C1 → C2, C6 · C2 → C3 · C3 → C4, C5 · C4 needs C1 + C3</p>
+
+        <div class="loop-row">
+          <span class="loop-chip">READ</span><span style="color:var(--faint)">→</span>
+          <span class="loop-chip">WATCH</span><span style="color:var(--faint)">→</span>
+          <span class="loop-chip">DO</span><span style="color:var(--faint)">→</span>
+          <span class="loop-chip">RETAIN</span><span style="color:var(--faint)">→</span>
+          <span class="loop-chip gate">GATE</span>
         </div>
       </div>
-      <div class="card" style="display:flex; flex-direction:column; gap:12px; justify-content:center;">
-        <div class="overline"><span data-en>Honest build status · counted from the audit</span><span data-fa>وضعیت ساخت صادقانه · شمرده‌شده از ممیزی</span></div>
-        <div class="diagram-scroll" style="display:flex; justify-content:center;" tabindex="0" role="region" aria-label="Icon array of build status, scrollable">
-          <img data-en src="assets/iconarray-en.svg" alt="Icon array: 15 of 35 site nodes are fully built; the rest are stub, preview, or legacy." width="340" height="240" style="max-width:100%; height:auto;">
-          <img data-fa src="assets/iconarray-fa.svg" alt="آرایهٔ نماد: پانزده گره از سی‌وپنج گره کاملاً ساخته‌شده." width="340" height="240" style="max-width:100%; height:auto;">
-        </div>
-        <p class="teach-cap" style="text-align:center;"><span data-en>Blocked ISOTYPE array — a countable natural-frequency framing, never a bare percentage.</span><span data-fa>آرایهٔ ایزوتایپ بلوکی — قاب فراوانی طبیعی و قابل‌شمارش، نه درصد خام.</span></p>
+    </section>
+
+    <!-- Panel 2: Pillars -->
+    <section id="pillars">
+      <div class="section-label">Panel 2</div>
+      <h2>Three experience pillars</h2>
+      <p class="section-lead">Device Lab, Patient Cases, and Evidence live inside each competency hub — not as separate top-level tabs. Each card opens the live feature.</p>
+
+      <div class="pillar-grid">
+        <a class="card pillar-card pillar-link" href="https://hrezaii95.github.io/dialysis-education-platform/devices" target="_blank" rel="noopener noreferrer">
+          <h3>Device Lab ↗</h3>
+          <p>3D setup, prime, prescribe to 23 L convection, timed alarms. IFU-pending educational model.</p>
+          <div class="pillar-tags"><span class="tag">C3</span><span class="tag">C4</span><span class="tag real" style="color:#4ade80">Hero</span></div>
+        </a>
+        <a class="card pillar-card pillar-link" href="https://hrezaii95.github.io/dialysis-education-platform/simulator?tab=cases" target="_blank" rel="noopener noreferrer">
+          <h3>Patient Cases ↗</h3>
+          <p>Branching crisis sims with vitals trajectory and cited debrief. Case 1 (hypotension) full; Cases 2–4 preview.</p>
+          <div class="pillar-tags"><span class="tag">C5</span><span class="tag real" style="color:#4ade80">Case 1 hero</span></div>
+        </a>
+        <a class="card pillar-card pillar-link" href="https://hrezaii95.github.io/dialysis-education-platform/convince" target="_blank" rel="noopener noreferrer">
+          <h3>Evidence &amp; Outcomes ↗</h3>
+          <p>Honest trial arc — CONVINCE, ESHOL, null trials (CONTRAST, Turkish). Dose-response framing.</p>
+          <div class="pillar-tags"><span class="tag">C6</span></div>
+        </a>
+        <a class="card pillar-card pillar-link" href="https://hrezaii95.github.io/dialysis-education-platform/course/c1" target="_blank" rel="noopener noreferrer">
+          <h3>Guided course ↗</h3>
+          <p>11 lesson types: reading, infographics, video, PDF, sims, quizzes, gates. C1 only in demo.</p>
+          <div class="pillar-tags"><span class="tag">C1</span></div>
+        </a>
+        <a class="card pillar-card pillar-link" href="https://hrezaii95.github.io/dialysis-education-platform/flipbook" target="_blank" rel="noopener noreferrer">
+          <h3>Flipbook ↗</h3>
+          <p>From HD to High-Volume HDF — Ch. 1–2 real, bilingual cover slice.</p>
+          <div class="pillar-tags"><span class="tag">C1</span><span class="tag">C2 preview</span></div>
+        </a>
+        <a class="card pillar-card pillar-link" href="https://hrezaii95.github.io/dialysis-education-platform/daily-5" target="_blank" rel="noopener noreferrer">
+          <h3>Daily-5 retention ↗</h3>
+          <p>12-card spaced deck across all six competencies. Hard mastery needs retention across 2+ sessions.</p>
+          <div class="pillar-tags"><span class="tag">All C1–C6</span></div>
+        </a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ══ PANEL 5 · MATRIX (kept) ══ -->
-  <section class="card" id="matrix" data-screen-label="Content matrix" style="overflow-x:auto;" aria-labelledby="matrix-h">
-    <div class="sec-head">
-      <h2 class="h2" id="matrix-h"><span data-en>Honest build status</span><span data-fa>وضعیت ساخت صادقانه</span></h2>
-      <span class="sub"><span data-en>only C1 has a full multi-format course</span><span data-fa>فقط C1 دورهٔ چندقالبی کامل دارد</span></span>
-    </div>
-    <div class="diagram-scroll" tabindex="0" role="region" aria-label="Honest build status table, scrollable">
-    <table>
-      <thead><tr><th><span data-en>Content type</span><span data-fa>نوع محتوا</span></th><th><bdi>C1</bdi></th><th><bdi>C2</bdi></th><th><bdi>C3</bdi></th><th><bdi>C4</bdi></th><th><bdi>C5</bdi></th><th><bdi>C6</bdi></th></tr></thead>
-      <tbody>
-        <tr><td><span data-en>Guided course</span><span data-fa>دورهٔ راهنمایی‌شده</span></td><td><span class="badge b-real">Real</span></td><td><span class="badge b-stub">Stub</span></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-        <tr><td><span data-en>Infographics / video</span><span data-fa>اینفوگرافیک / ویدیو</span></td><td><span class="badge b-real">Real</span></td><td><span class="badge b-stub">Stub</span></td><td>—</td><td>—</td><td>—</td><td><span class="badge b-real">Real</span></td></tr>
-        <tr><td><span data-en>3D / interactive sim</span><span data-fa>شبیه‌سازی سه‌بعدی</span></td><td><span class="badge b-real">Real</span></td><td>—</td><td><span class="badge b-real">Real</span></td><td><span class="badge b-panel">Panel</span></td><td><span class="badge b-real">Real</span></td><td><span class="badge b-real">Real</span></td></tr>
-        <tr><td><span data-en>Quiz module</span><span data-fa>ماژول آزمون</span></td><td><span class="badge b-real">Real</span></td><td><span class="badge b-gap">Gap</span></td><td>—</td><td>—</td><td><span class="badge b-stub">Stub</span></td><td><span class="badge b-real">Real</span></td></tr>
-        <tr><td><span data-en>Mastery gate</span><span data-fa>دروازهٔ تسلط</span></td><td><span class="badge b-gate">Gate</span></td><td><span class="badge b-stub">Stub</span></td><td><span class="badge b-gate">Gate</span></td><td><span class="badge b-panel">Panel</span></td><td><span class="badge b-gate">Gate</span></td><td><span class="badge b-gate">Gate</span></td></tr>
-        <tr><td><span data-en>Branching case</span><span data-fa>مورد شاخه‌ای</span></td><td>—</td><td>—</td><td>—</td><td>—</td><td><span class="badge b-real">Real</span></td><td>—</td></tr>
-        <tr><td><span data-en>Daily-5 cards</span><span data-fa>کارت‌های روزانهٔ ۵</span></td><td><span class="badge b-real">Real</span></td><td><span class="badge b-real">Real</span></td><td><span class="badge b-real">Real</span></td><td><span class="badge b-real">Real</span></td><td><span class="badge b-real">Real</span></td><td><span class="badge b-real">Real</span></td></tr>
-        <tr><td><span data-en>Placement / credential</span><span data-fa>تعیین سطح / گواهی</span></td><td colspan="6"><span class="badge b-cross"><span data-en>Cross-competency · 7Q placement + 8Q credential</span><span data-fa>میان‌شایستگی · تعیین سطح ۷ سؤالی + گواهی ۸ سؤالی</span></span></td></tr>
-      </tbody>
-    </table>
-    </div>
-  </section>
+    <!-- Panel 3: Matrix -->
+    <section id="matrix">
+      <div class="section-label">Panel 3</div>
+      <h2>Content-type matrix</h2>
+      <p class="section-lead">Honest build status per competency. Only C1 has a full multi-format course and embedded academy resources.</p>
 
-  <!-- ══ PANEL 6 · REAL CONNECTION GRAPH — dark instrument panel ══ -->
-  <section class="card dark" id="map" data-screen-label="Connection map" aria-labelledby="map-h">
-    <div class="sec-head">
-      <h2 class="h2" id="map-h" style="color:#fff;"><span data-en>Site connection map</span><span data-fa style="font-family:var(--font-body-fa);">نقشهٔ اتصال سایت</span></h2>
-      <span class="sub tnum" style="color:#9FB0C8;"><span data-en>Real graph · <bdi>35</bdi> nodes · <bdi>79</bdi> edges total · Tiers A–C shown</span><span data-fa>گراف واقعی · <bdi>۳۵</bdi> گره · <bdi>۷۹</bdi> یال · لایه‌های A تا C</span></span>
-    </div>
-    <div style="background:var(--white); border-radius:16px; padding:12px;" class="diagram-scroll" tabindex="0" role="region" aria-label="Site connection map, scrollable">
-      <img data-en src="assets/connection-en.svg" alt="Platform connection map — a real node-edge topological graph. Tier A (six competencies C1–C6), Tier B (six navigation routes), Tier C (eight assessment nodes), with prerequisite, practice, and assessment edges. Status colors: real, stub, planned, legacy, redirect." width="1120" height="600" style="width:100%; height:auto; min-width:840px;">
-      <img data-fa src="assets/connection-fa.svg" alt="نقشهٔ اتصال پلتفرم — گراف توپولوژیک واقعی گره-یال." width="1120" height="600" style="width:100%; height:auto; min-width:840px;">
-    </div>
-    <div class="row" style="margin-top:14px; gap:8px; flex-wrap:wrap; font-size:11px; color:#9FB0C8;">
-      <span style="font-weight:700; color:#fff;"><span data-en>Not drawn here (audit-only):</span><span data-fa>ترسیم‌نشده (فقط ممیزی):</span></span>
-      <span class="chip dashed" style="color:#9FB0C8; border-color:rgba(255,255,255,0.30);"><span data-en>Tier D · 8 legacy skill nodes</span><span data-fa>لایهٔ D · ۸ گرهٔ مهارت میراث</span></span>
-      <span class="chip dashed" style="color:#9FB0C8; border-color:rgba(255,255,255,0.30);"><span data-en>Tier E · 7 incoherencies</span><span data-fa>لایهٔ E · ۷ ناهماهنگی</span></span>
-      <span class="sub" style="color:#7C8CA8;"><span data-en>— reconciled in production; full graph in the live demo</span><span data-fa>— در تولید هماهنگ می‌شوند؛ گراف کامل در نسخهٔ زنده</span></span>
-    </div>
-  </section>
-
-  <!-- ══ GAPS + DISCLAIMER ══ -->
-  <section class="grid-2" data-screen-label="Gaps & disclaimer">
-    <div class="card">
-      <div class="overline" style="margin-bottom:12px;"><span data-en>Known gaps · transparent</span><span data-fa>شکاف‌های شناخته‌شده · شفاف</span></div>
-      <div class="stack" style="gap:10px; font-size:12.5px; line-height:1.6; color:var(--text-muted);">
-        <div class="row" style="align-items:flex-start; gap:10px;"><span style="width:7px; height:7px; border-radius:999px; background:var(--caution); margin-top:6px; flex:none;"></span><span data-en>C2 has no dedicated quiz yet — Daily-5 retrieval only</span><span data-fa>C2 هنوز آزمون اختصاصی ندارد — فقط بازیابی روزانهٔ ۵</span></div>
-        <div class="row" style="align-items:flex-start; gap:10px;"><span style="width:7px; height:7px; border-radius:999px; background:var(--caution); margin-top:6px; flex:none;"></span><span data-en>Cases 2–4 are preview depth (first decision point only)</span><span data-fa>موارد ۲ تا ۴ در عمق پیش‌نمایش‌اند (فقط نخستین نقطهٔ تصمیم)</span></div>
-        <div class="row" style="align-items:flex-start; gap:10px;"><span style="width:7px; height:7px; border-radius:999px; background:var(--caution); margin-top:6px; flex:none;"></span><span data-en>Device Lab specifications await official IFU verification</span><span data-fa>مشخصات آزمایشگاه دستگاه در انتظار تأیید رسمی IFU است</span></div>
-        <div class="row" style="align-items:flex-start; gap:10px;"><span style="width:7px; height:7px; border-radius:999px; background:var(--caution); margin-top:6px; flex:none;"></span><span data-en>Legacy skill overlay and C1–C6 spine describe the product two ways — reconciled in production</span><span data-fa>پوشش مهارت میراث و ستون C1–C6 محصول را دو گونه توصیف می‌کنند — در تولید هماهنگ می‌شوند</span></div>
+      <div class="card" style="overflow-x:auto">
+        <table class="data">
+          <thead>
+            <tr><th>Content type</th><th>C1</th><th>C2</th><th>C3</th><th>C4</th><th>C5</th><th>C6</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Guided course</td><td class="cell-real">Real</td><td class="cell-stub">Stub</td><td class="cell-none">—</td><td class="cell-none">—</td><td class="cell-none">—</td><td class="cell-none">—</td></tr>
+            <tr><td>Infographics / video</td><td class="cell-real">Real</td><td class="cell-stub">Stub</td><td class="cell-none">—</td><td class="cell-none">—</td><td class="cell-none">—</td><td class="cell-real">Real</td></tr>
+            <tr><td>3D / interactive sim</td><td class="cell-real">Real</td><td class="cell-none">—</td><td class="cell-real">Real</td><td class="cell-panel">Panel</td><td class="cell-real">Real</td><td class="cell-real">Real</td></tr>
+            <tr><td>Quiz module</td><td class="cell-real">Real</td><td class="cell-gap">Gap</td><td class="cell-none">—</td><td class="cell-none">—</td><td class="cell-stub">Stub</td><td class="cell-real">Real</td></tr>
+            <tr><td>Mastery gate</td><td class="cell-gate">Gate</td><td class="cell-stub">Stub</td><td class="cell-gate">Gate</td><td class="cell-panel">Panel</td><td class="cell-gate">Gate</td><td class="cell-gate">Gate</td></tr>
+            <tr><td>Branching case</td><td class="cell-none">—</td><td class="cell-none">—</td><td class="cell-none">—</td><td class="cell-none">—</td><td class="cell-real">Real</td><td class="cell-none">—</td></tr>
+            <tr><td>Daily-5 cards</td><td class="cell-real">Real</td><td class="cell-real">Real</td><td class="cell-real">Real</td><td class="cell-real">Real</td><td class="cell-real">Real</td><td class="cell-real">Real</td></tr>
+            <tr><td>Placement / credential</td><td class="cell-cross">Cross</td><td class="cell-cross">Cross</td><td class="cell-cross">Cross</td><td class="cell-cross">Cross</td><td class="cell-cross">Cross</td><td class="cell-cross">Cross</td></tr>
+          </tbody>
+        </table>
       </div>
-    </div>
-    <div class="card dark" style="display:flex; flex-direction:column; justify-content:center; gap:12px;">
-      <img src="assets/pulse-r-white.svg" width="44" height="44" alt="Pulse-R mark">
-      <div style="font-size:12.5px; line-height:1.7; color:#9FB0C8;"><span data-en>Educational simulation only — not for clinical prescription or regulatory-cleared decision support. Vendor-neutral learner surface. Claims are citation-gated (PMID/DOI).</span><span data-fa>فقط شبیه‌سازی آموزشی — نه برای تجویز بالینی یا پشتیبانی تصمیم دارای مجوز نظارتی. سطح یادگیرندهٔ مستقل از سازنده. ادعاها مستند به PMID/DOI.</span></div>
-      <div style="font-size:11px; color:#7C8CA8;"><span data-en>Hossein Rezaee Advisory · Medtech &amp; Clinical Strategy · July 2026</span><span data-fa>مشاورهٔ حسین رضایی · راهبرد فناوری پزشکی و بالینی · تیر ۱۴۰۵</span></div>
-    </div>
-  </section>
+
+      <div class="card" style="margin-top:14px">
+        <h3 style="font-size:13px;margin:0 0 10px">Demo vs production</h3>
+        <table class="data">
+          <thead><tr><th>Area</th><th>Demo today</th><th>Production</th></tr></thead>
+          <tbody>
+            <tr><td>C1 Foundation</td><td>Full multi-format course</td><td>+ Farsi depth</td></tr>
+            <tr><td>C2 Access</td><td>Preview · no quiz</td><td>Full course + assessment</td></tr>
+            <tr><td>C3 Device Lab</td><td>3D hero</td><td>+ IFU-verified specs</td></tr>
+            <tr><td>C5 Cases</td><td>Case 1 full</td><td>All four crisis sims</td></tr>
+            <tr><td>Certificate</td><td>8-question pool</td><td>Expanded + CME pathway</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Panel 4: Connection map -->
+    <section id="connection">
+      <div class="section-label">Panel 4</div>
+      <h2>Site connection map</h2>
+      <p class="section-lead">How competencies, practice surfaces, and assessments connect — the full five-tier map. Every coloured card is a live link into the demo. Legacy skill nodes (Tier D) are shown for audit only; Tier E lists known incoherencies with their target fix.</p>
+
+      <div class="card conn-svg-card">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 1134" width="100%" role="img" aria-labelledby="cm-title cm-desc" font-family="Inter, -apple-system, Segoe UI, Roboto, sans-serif">
+<title id="cm-title">Dr. Sadat platform connection map</title>
+<desc id="cm-desc">Five tiers: A competency spine C1 to C6, B navigation surfaces, C assessment and retention loop, D legacy skill overlay for audit only, E incoherencies with target fixes. Every implemented node links to its live demo route. 35 nodes, 79 edges.</desc>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#2b6cff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<text x="20" y="26" font-size="15" font-weight="700" fill="#e7eef9">Site connection map — every built node links to the live demo</text>
+<text x="20" y="43" font-size="10.5" fill="#64718c">35 nodes · 79 relationships · click any coloured card to open that surface in the demo</text>
+<rect x="12" y="46" width="856" height="142" rx="10" fill="#16223a" fill-opacity="0.4" stroke="#26324c" stroke-width="1"/>
+<text x="24" y="68" font-size="13" font-weight="700" fill="#e7eef9">Tier A</text>
+<text x="24" y="86" font-size="10.5" fill="#93a1bd">Competency spine</text>
+<text x="24" y="100" font-size="10.5" fill="#93a1bd">(C1–C6)</text>
+<rect x="12" y="202" width="856" height="142" rx="10" fill="#16223a" fill-opacity="0.4" stroke="#26324c" stroke-width="1"/>
+<text x="24" y="224" font-size="13" font-weight="700" fill="#e7eef9">Tier B</text>
+<text x="24" y="242" font-size="10.5" fill="#93a1bd">Navigation</text>
+<text x="24" y="256" font-size="10.5" fill="#93a1bd">surfaces</text>
+<rect x="12" y="358" width="856" height="208" rx="10" fill="#16223a" fill-opacity="0.4" stroke="#26324c" stroke-width="1"/>
+<text x="24" y="380" font-size="13" font-weight="700" fill="#e7eef9">Tier C</text>
+<text x="24" y="398" font-size="10.5" fill="#93a1bd">Assessment &amp;</text>
+<text x="24" y="412" font-size="10.5" fill="#93a1bd">retention loop</text>
+<rect x="12" y="580" width="856" height="208" rx="10" fill="#16223a" fill-opacity="0.4" stroke="#26324c" stroke-width="1"/>
+<text x="24" y="602" font-size="13" font-weight="700" fill="#e7eef9">Tier D</text>
+<text x="24" y="620" font-size="10.5" fill="#93a1bd">Legacy skill</text>
+<text x="24" y="634" font-size="10.5" fill="#93a1bd">overlay —</text>
+<text x="24" y="648" font-size="10.5" fill="#93a1bd">audit-only</text>
+<rect x="12" y="802" width="856" height="270" rx="10" fill="#16223a" fill-opacity="0.4" stroke="#26324c" stroke-width="1"/>
+<text x="24" y="824" font-size="13" font-weight="700" fill="#e7eef9">Tier E</text>
+<text x="24" y="842" font-size="10.5" fill="#93a1bd">Incoherencies +</text>
+<text x="24" y="856" font-size="10.5" fill="#93a1bd">target fix</text>
+<line x1="320" y1="80" x2="334" y2="80" stroke="#2b6cff" stroke-width="1.5" marker-end="url(#ah)"/>
+<path d="M320 80 C 418 80, 418 146, 516 146" fill="none" stroke="#2b6cff" stroke-width="1.3" stroke-opacity="0.7" marker-end="url(#ah)"/>
+<line x1="502" y1="80" x2="516" y2="80" stroke="#2b6cff" stroke-width="1.5" marker-end="url(#ah)"/>
+<path d="M320 80 C 236 80, 236 146, 152 146" fill="none" stroke="#2b6cff" stroke-width="1.3" stroke-opacity="0.7" marker-end="url(#ah)"/>
+<path d="M684 80 C 418 80, 418 146, 152 146" fill="none" stroke="#2b6cff" stroke-width="1.3" stroke-opacity="0.7" marker-end="url(#ah)"/>
+<path d="M684 80 C 509 80, 509 146, 334 146" fill="none" stroke="#2b6cff" stroke-width="1.3" stroke-opacity="0.7" marker-end="url(#ah)"/>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/course/c1" target="_blank" rel="noopener noreferrer"><title>Open live demo: Understand the therapy</title><rect x="152" y="54" width="168" height="52" rx="7" fill="#16223a" stroke="#22c55e" stroke-width="1.5"/><rect x="152" y="54" width="4" height="52" rx="2" fill="#22c55e"/><text x="164" y="71" font-size="10.5" fill="#e7eef9">Understand the therapy</text><text x="312" y="99" text-anchor="end" font-size="8" font-weight="700" fill="#22c55e" letter-spacing="0.4">REAL</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/flipbook?page=m4-p1" target="_blank" rel="noopener noreferrer"><title>Open live demo: Vascular access &amp; cannulation</title><rect x="334" y="54" width="168" height="52" rx="7" fill="#16223a" stroke="#f59e0b" stroke-width="1.5"/><rect x="334" y="54" width="4" height="52" rx="2" fill="#f59e0b"/><text x="346" y="71" font-size="10.5" fill="#e7eef9">Vascular access &amp;</text><text x="346" y="83.5" font-size="10.5" fill="#e7eef9">cannulation</text><text x="494" y="99" text-anchor="end" font-size="8" font-weight="700" fill="#f59e0b" letter-spacing="0.4">STUB</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/devices" target="_blank" rel="noopener noreferrer"><title>Open live demo: Operate the 5008 for online-HDF</title><rect x="516" y="54" width="168" height="52" rx="7" fill="#16223a" stroke="#22c55e" stroke-width="1.5"/><rect x="516" y="54" width="4" height="52" rx="2" fill="#22c55e"/><text x="528" y="71" font-size="10.5" fill="#e7eef9">Operate the 5008 for</text><text x="528" y="83.5" font-size="10.5" fill="#e7eef9">online-HDF</text><text x="676" y="99" text-anchor="end" font-size="8" font-weight="700" fill="#22c55e" letter-spacing="0.4">REAL</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/simulator?tab=circuit" target="_blank" rel="noopener noreferrer"><title>Open live demo: Deliver HDF Rx + water safety</title><rect x="152" y="120" width="168" height="52" rx="7" fill="#16223a" stroke="#94a3b8" stroke-width="1.5"/><rect x="152" y="120" width="4" height="52" rx="2" fill="#94a3b8"/><text x="164" y="137" font-size="10.5" fill="#e7eef9">Deliver HDF Rx + water</text><text x="164" y="149.5" font-size="10.5" fill="#e7eef9">safety</text><text x="312" y="165" text-anchor="end" font-size="8" font-weight="700" fill="#94a3b8" letter-spacing="0.4">PLANNED</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/simulator?tab=cases" target="_blank" rel="noopener noreferrer"><title>Open live demo: Monitor adequacy &amp; complications</title><rect x="334" y="120" width="168" height="52" rx="7" fill="#16223a" stroke="#22c55e" stroke-width="1.5"/><rect x="334" y="120" width="4" height="52" rx="2" fill="#22c55e"/><text x="346" y="137" font-size="10.5" fill="#e7eef9">Monitor adequacy &amp;</text><text x="346" y="149.5" font-size="10.5" fill="#e7eef9">complications</text><text x="494" y="165" text-anchor="end" font-size="8" font-weight="700" fill="#22c55e" letter-spacing="0.4">REAL</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/convince" target="_blank" rel="noopener noreferrer"><title>Open live demo: Know the evidence</title><rect x="516" y="120" width="168" height="52" rx="7" fill="#16223a" stroke="#22c55e" stroke-width="1.5"/><rect x="516" y="120" width="4" height="52" rx="2" fill="#22c55e"/><text x="528" y="137" font-size="10.5" fill="#e7eef9">Know the evidence</text><text x="676" y="165" text-anchor="end" font-size="8" font-weight="700" fill="#22c55e" letter-spacing="0.4">REAL</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/" target="_blank" rel="noopener noreferrer"><title>Open live demo: Home / onboarding</title><rect x="152" y="210" width="168" height="52" rx="7" fill="#16223a" stroke="#22c55e" stroke-width="1.5"/><rect x="152" y="210" width="4" height="52" rx="2" fill="#22c55e"/><text x="164" y="227" font-size="10.5" fill="#e7eef9">Home / onboarding</text><text x="312" y="255" text-anchor="end" font-size="8" font-weight="700" fill="#22c55e" letter-spacing="0.4">REAL</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/my-path" target="_blank" rel="noopener noreferrer"><title>Open live demo: My Path (competency spine)</title><rect x="334" y="210" width="168" height="52" rx="7" fill="#16223a" stroke="#22c55e" stroke-width="1.5"/><rect x="334" y="210" width="4" height="52" rx="2" fill="#22c55e"/><text x="346" y="227" font-size="10.5" fill="#e7eef9">My Path</text><text x="494" y="255" text-anchor="end" font-size="8" font-weight="700" fill="#22c55e" letter-spacing="0.4">REAL</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/learn/c1" target="_blank" rel="noopener noreferrer"><title>Open live demo: Learn hub (per-competency detail, /learn/c1…c6)</title><rect x="516" y="210" width="168" height="52" rx="7" fill="#16223a" stroke="#22c55e" stroke-width="1.5"/><rect x="516" y="210" width="4" height="52" rx="2" fill="#22c55e"/><text x="528" y="227" font-size="10.5" fill="#e7eef9">Learn hub</text><text x="676" y="255" text-anchor="end" font-size="8" font-weight="700" fill="#22c55e" letter-spacing="0.4">REAL</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/simulator" target="_blank" rel="noopener noreferrer"><title>Open live demo: Simulator (default / no tab — generic practice CTA)</title><rect x="152" y="276" width="168" height="52" rx="7" fill="#16223a" stroke="#22c55e" stroke-width="1.5"/><rect x="152" y="276" width="4" height="52" rx="2" fill="#22c55e"/><text x="164" y="293" font-size="10.5" fill="#e7eef9">Simulator</text><text x="312" y="321" text-anchor="end" font-size="8" font-weight="700" fill="#22c55e" letter-spacing="0.4">REAL</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/simulator?tab=monitor" target="_blank" rel="noopener noreferrer"><title>Open live demo: 5008 Monitor Mastery tab</title><rect x="334" y="276" width="168" height="52" rx="7" fill="#16223a" stroke="#22c55e" stroke-width="1.5"/><rect x="334" y="276" width="4" height="52" rx="2" fill="#22c55e"/><text x="346" y="293" font-size="10.5" fill="#e7eef9">5008 Monitor Mastery tab</text><text x="494" y="321" text-anchor="end" font-size="8" font-weight="700" fill="#22c55e" letter-spacing="0.4">REAL</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/admin" target="_blank" rel="noopener noreferrer"><title>Open live demo: Supervisor dashboard</title><rect x="516" y="276" width="168" height="52" rx="7" fill="#16223a" stroke="#22c55e" stroke-width="1.5"/><rect x="516" y="276" width="4" height="52" rx="2" fill="#22c55e"/><text x="528" y="293" font-size="10.5" fill="#e7eef9">Supervisor dashboard</text><text x="676" y="321" text-anchor="end" font-size="8" font-weight="700" fill="#22c55e" letter-spacing="0.4">REAL</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/placement" target="_blank" rel="noopener noreferrer"><title>Open live demo: Placement diagnostic (7Q)</title><rect x="152" y="366" width="168" height="52" rx="7" fill="#16223a" stroke="#22c55e" stroke-width="1.5"/><rect x="152" y="366" width="4" height="52" rx="2" fill="#22c55e"/><text x="164" y="383" font-size="10.5" fill="#e7eef9">Placement diagnostic</text><text x="312" y="411" text-anchor="end" font-size="8" font-weight="700" fill="#22c55e" letter-spacing="0.4">REAL</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/assessment" target="_blank" rel="noopener noreferrer"><title>Open live demo: Credential exam (8Q, ≥80% → certificate)</title><rect x="334" y="366" width="168" height="52" rx="7" fill="#16223a" stroke="#22c55e" stroke-width="1.5"/><rect x="334" y="366" width="4" height="52" rx="2" fill="#22c55e"/><text x="346" y="383" font-size="10.5" fill="#e7eef9">Credential exam</text><text x="494" y="411" text-anchor="end" font-size="8" font-weight="700" fill="#22c55e" letter-spacing="0.4">REAL</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/daily-5" target="_blank" rel="noopener noreferrer"><title>Open live demo: Daily-5 spaced retention (12 cards, all 6 competencies)</title><rect x="516" y="366" width="168" height="52" rx="7" fill="#16223a" stroke="#22c55e" stroke-width="1.5"/><rect x="516" y="366" width="4" height="52" rx="2" fill="#22c55e"/><text x="528" y="383" font-size="10.5" fill="#e7eef9">Daily-5 spaced retention</text><text x="676" y="411" text-anchor="end" font-size="8" font-weight="700" fill="#22c55e" letter-spacing="0.4">REAL</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/simulator?tab=cases" target="_blank" rel="noopener noreferrer"><title>Open live demo: Case 1 — IDH (full branching, DP1–DP3)</title><rect x="152" y="432" width="168" height="52" rx="7" fill="#16223a" stroke="#22c55e" stroke-width="1.5"/><rect x="152" y="432" width="4" height="52" rx="2" fill="#22c55e"/><text x="164" y="449" font-size="10.5" fill="#e7eef9">Case 1 — IDH</text><text x="312" y="477" text-anchor="end" font-size="8" font-weight="700" fill="#22c55e" letter-spacing="0.4">REAL</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/simulator?tab=cases" target="_blank" rel="noopener noreferrer"><title>Open live demo: Case 2 — Arrhythmia (stub, DP1 only)</title><rect x="334" y="432" width="168" height="52" rx="7" fill="#16223a" stroke="#f59e0b" stroke-width="1.5"/><rect x="334" y="432" width="4" height="52" rx="2" fill="#f59e0b"/><text x="346" y="449" font-size="10.5" fill="#e7eef9">Case 2 — Arrhythmia</text><text x="494" y="477" text-anchor="end" font-size="8" font-weight="700" fill="#f59e0b" letter-spacing="0.4">STUB</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/simulator?tab=cases" target="_blank" rel="noopener noreferrer"><title>Open live demo: Case 3 — Hyperkalemia (stub, DP1 only)</title><rect x="516" y="432" width="168" height="52" rx="7" fill="#16223a" stroke="#f59e0b" stroke-width="1.5"/><rect x="516" y="432" width="4" height="52" rx="2" fill="#f59e0b"/><text x="528" y="449" font-size="10.5" fill="#e7eef9">Case 3 — Hyperkalemia</text><text x="676" y="477" text-anchor="end" font-size="8" font-weight="700" fill="#f59e0b" letter-spacing="0.4">STUB</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/simulator?tab=cases" target="_blank" rel="noopener noreferrer"><title>Open live demo: Case 4 — Metabolic acidosis (stub, DP1 only)</title><rect x="152" y="498" width="168" height="52" rx="7" fill="#16223a" stroke="#f59e0b" stroke-width="1.5"/><rect x="152" y="498" width="4" height="52" rx="2" fill="#f59e0b"/><text x="164" y="515" font-size="10.5" fill="#e7eef9">Case 4 — Metabolic</text><text x="164" y="527.5" font-size="10.5" fill="#e7eef9">acidosis</text><text x="312" y="543" text-anchor="end" font-size="8" font-weight="700" fill="#f59e0b" letter-spacing="0.4">STUB</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/alarms" target="_blank" rel="noopener noreferrer"><title>Open live demo: Alarm trainer (8 critical alarms, audio + checklist)</title><rect x="334" y="498" width="168" height="52" rx="7" fill="#16223a" stroke="#22c55e" stroke-width="1.5"/><rect x="334" y="498" width="4" height="52" rx="2" fill="#22c55e"/><text x="346" y="515" font-size="10.5" fill="#e7eef9">Alarm trainer</text><text x="494" y="543" text-anchor="end" font-size="8" font-weight="700" fill="#22c55e" letter-spacing="0.4">REAL</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/flipbook?page=m1-p1" target="_blank" rel="noopener noreferrer"><title>Open live demo: HDF Clinical Foundation (legacy skill)</title><rect x="152" y="588" width="168" height="52" rx="7" fill="#16223a" stroke="#5b6a86" stroke-width="1.5"/><rect x="152" y="588" width="4" height="52" rx="2" fill="#5b6a86"/><text x="164" y="605" font-size="10.5" fill="#e7eef9">HDF Clinical Foundation</text><text x="312" y="633" text-anchor="end" font-size="8" font-weight="700" fill="#5b6a86" letter-spacing="0.4">LEGACY</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/simulator?tab=circuit" target="_blank" rel="noopener noreferrer"><title>Open live demo: Pump the Circuit (legacy skill)</title><rect x="334" y="588" width="168" height="52" rx="7" fill="#16223a" stroke="#5b6a86" stroke-width="1.5"/><rect x="334" y="588" width="4" height="52" rx="2" fill="#5b6a86"/><text x="346" y="605" font-size="10.5" fill="#e7eef9">Pump the Circuit</text><text x="494" y="633" text-anchor="end" font-size="8" font-weight="700" fill="#5b6a86" letter-spacing="0.4">LEGACY</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/simulator?tab=monitor" target="_blank" rel="noopener noreferrer"><title>Open live demo: 5008 Monitor Mastery (legacy skill)</title><rect x="516" y="588" width="168" height="52" rx="7" fill="#16223a" stroke="#5b6a86" stroke-width="1.5"/><rect x="516" y="588" width="4" height="52" rx="2" fill="#5b6a86"/><text x="528" y="605" font-size="10.5" fill="#e7eef9">5008 Monitor Mastery</text><text x="676" y="633" text-anchor="end" font-size="8" font-weight="700" fill="#5b6a86" letter-spacing="0.4">LEGACY</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/simulator?tab=cases" target="_blank" rel="noopener noreferrer"><title>Open live demo: Patient Case Lab (legacy skill)</title><rect x="152" y="654" width="168" height="52" rx="7" fill="#16223a" stroke="#5b6a86" stroke-width="1.5"/><rect x="152" y="654" width="4" height="52" rx="2" fill="#5b6a86"/><text x="164" y="671" font-size="10.5" fill="#e7eef9">Patient Case Lab</text><text x="312" y="699" text-anchor="end" font-size="8" font-weight="700" fill="#5b6a86" letter-spacing="0.4">LEGACY</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/alarms" target="_blank" rel="noopener noreferrer"><title>Open live demo: Alarm Response (legacy skill)</title><rect x="334" y="654" width="168" height="52" rx="7" fill="#16223a" stroke="#5b6a86" stroke-width="1.5"/><rect x="334" y="654" width="4" height="52" rx="2" fill="#5b6a86"/><text x="346" y="671" font-size="10.5" fill="#e7eef9">Alarm Response</text><text x="494" y="699" text-anchor="end" font-size="8" font-weight="700" fill="#5b6a86" letter-spacing="0.4">LEGACY</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/devices" target="_blank" rel="noopener noreferrer"><title>Open live demo: 3D Device Configurator (legacy skill)</title><rect x="516" y="654" width="168" height="52" rx="7" fill="#16223a" stroke="#5b6a86" stroke-width="1.5"/><rect x="516" y="654" width="4" height="52" rx="2" fill="#5b6a86"/><text x="528" y="671" font-size="10.5" fill="#e7eef9">3D Device Configurator</text><text x="676" y="699" text-anchor="end" font-size="8" font-weight="700" fill="#5b6a86" letter-spacing="0.4">LEGACY</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/convince" target="_blank" rel="noopener noreferrer"><title>Open live demo: CONVINCE Explorer (legacy skill)</title><rect x="152" y="720" width="168" height="52" rx="7" fill="#16223a" stroke="#5b6a86" stroke-width="1.5"/><rect x="152" y="720" width="4" height="52" rx="2" fill="#5b6a86"/><text x="164" y="737" font-size="10.5" fill="#e7eef9">CONVINCE Explorer</text><text x="312" y="765" text-anchor="end" font-size="8" font-weight="700" fill="#5b6a86" letter-spacing="0.4">LEGACY</text></a>
+<a href="https://hrezaii95.github.io/dialysis-education-platform/assessment" target="_blank" rel="noopener noreferrer"><title>Open live demo: Clinical Credential (legacy skill node)</title><rect x="334" y="720" width="168" height="52" rx="7" fill="#16223a" stroke="#5b6a86" stroke-width="1.5"/><rect x="334" y="720" width="4" height="52" rx="2" fill="#5b6a86"/><text x="346" y="737" font-size="10.5" fill="#e7eef9">Clinical Credential</text><text x="494" y="765" text-anchor="end" font-size="8" font-weight="700" fill="#5b6a86" letter-spacing="0.4">LEGACY</text></a>
+<circle cx="158" cy="824" r="4" fill="#f43f5e"/>
+<text x="170" y="822" font-size="10.5" fill="#93a1bd">/cases (client-side redirect stub, no content of its own)</text>
+<circle cx="158" cy="858" r="4" fill="#f43f5e"/>
+<text x="170" y="856" font-size="10.5" fill="#93a1bd">C2 has no dedicated quiz/placement item, Daily-5 only</text>
+<circle cx="158" cy="892" r="4" fill="#f43f5e"/>
+<text x="170" y="890" font-size="10.5" fill="#93a1bd">legacy credential prereqs omit C1/C4 though CREDENTIAL_QUIZ tests them</text>
+<circle cx="158" cy="926" r="4" fill="#f43f5e"/>
+<text x="170" y="924" font-size="10.5" fill="#93a1bd">dual progress-key system (c-key vs legacy skill-key) can silently diverge</text>
+<circle cx="158" cy="960" r="4" fill="#f43f5e"/>
+<text x="170" y="958" font-size="10.5" fill="#93a1bd">conflicting prerequisite chains — spine C2→C3 vs legacy foundation→devices</text>
+<circle cx="158" cy="994" r="4" fill="#f43f5e"/>
+<text x="170" y="992" font-size="10.5" fill="#93a1bd">credential pass (≥80% quiz) ≠ true isMastered() on all 6 competencies</text>
+<circle cx="158" cy="1028" r="4" fill="#f43f5e"/>
+<text x="170" y="1026" font-size="10.5" fill="#93a1bd">two plausible C1 entry routes (/course/c1 vs /flipbook?page=m1-p1) + 3 competencies default</text>
+<text x="170" y="1038" font-size="10.5" fill="#93a1bd">simHref to generic /simulator</text>
+<rect x="20" y="1103" width="11" height="11" rx="2" fill="#22c55e"/><text x="36" y="1112" font-size="10.5" fill="#93a1bd">Live in demo</text><rect x="132.4" y="1103" width="11" height="11" rx="2" fill="#f59e0b"/><text x="148.4" y="1112" font-size="10.5" fill="#93a1bd">Preview / stub</text><rect x="257.2" y="1103" width="11" height="11" rx="2" fill="#94a3b8"/><text x="273.2" y="1112" font-size="10.5" fill="#93a1bd">Panel / planned</text><rect x="388.2" y="1103" width="11" height="11" rx="2" fill="#5b6a86"/><text x="404.2" y="1112" font-size="10.5" fill="#93a1bd">Legacy (audit-only)</text><rect x="544" y="1103" width="11" height="11" rx="2" fill="#f43f5e"/><text x="560" y="1112" font-size="10.5" fill="#93a1bd">Incoherency</text>
+</svg>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <h3 style="font-size:13px;margin:0 0 10px">Known gaps (transparent)</h3>
+        <ul class="gap-list">
+          <li>C2 has no dedicated quiz module yet — Daily-5 retrieval only</li>
+          <li>Only C1 has a full multi-format course and embedded academy resources</li>
+          <li>Cases 2–4 are preview depth (first decision point only)</li>
+          <li>Device Lab specifications await official IFU verification</li>
+          <li>Legacy skill overlay (Tier D) and the C1–C6 spine describe the same product two ways — reconciled in the production build</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p><strong>Disclaimer:</strong> Educational simulation only — not for clinical prescription or regulatory-cleared decision support. Vendor-neutral learner surface. IFU-pending device specifications. Clinical claims are citation-gated (PMID/DOI) in the platform.</p>
+      <p style="margin-top:8px">Hossein Rezaee Advisory · Medtech &amp; Clinical Strategy · July 2026</p>
+    </footer>
   </main>
 
-</div>
-
-<script>
-  // Learner-paced only — no autoplay, no timers. Just the EN/FA toggle.
-  (function () {
-    var root = document.documentElement;
-    var btns = document.querySelectorAll('[data-set-lang]');
-    function setLang(lang) {
-      root.setAttribute('lang', lang);
-      root.setAttribute('data-lang', lang);
-      root.setAttribute('dir', lang === 'fa' ? 'rtl' : 'ltr');
-      btns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang)); });
-    }
-    btns.forEach(function (b) {
-      b.addEventListener('click', function () { setLang(b.getAttribute('data-set-lang')); });
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const btn = document.getElementById('theme-toggle');
+      const saved = localStorage.getItem('journey-theme');
+      const apply = (theme) => {
+        const isLight = theme === 'light';
+        root.classList.toggle('light', isLight);
+        root.setAttribute('data-theme', theme);
+        if (btn) btn.textContent = isLight ? '☾ Dark' : '☀ Light';
+        try { localStorage.setItem('journey-theme', theme); } catch (_) {}
+      };
+      apply(saved === 'light' ? 'light' : 'dark');
+      btn?.addEventListener('click', () => apply(root.classList.contains('light') ? 'dark' : 'light'));
+    })();
+    document.querySelectorAll('.site-nav a[href^="#"]').forEach((a) => {
+      a.addEventListener('click', () => {
+        document.querySelectorAll('.site-nav a').forEach((x) => x.classList.remove('active'));
+        a.classList.add('active');
+      });
     });
-  })();
-</script>
+  </script>
 </body>
 </html>
