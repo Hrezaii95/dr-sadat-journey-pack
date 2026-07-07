@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 190" width="520" height="190" role="img" font-family='system-ui, Segoe UI, Roboto, Arial, sans-serif'>
+<title>Convection volume per session · HD vs HV-HDF</title>
+<desc>Comparison bars: HD delivers 0 L convection per session, HV-HDF 23 L. Source CONVINCE 2023, PMID 37326323.</desc>
+<defs></defs>
+<rect x="0" y="0" width="520" height="190" fill="#FFFFFF"/>
+<text x="24" y="26" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="11" font-weight="600" fill="#8A95A1" text-anchor="start" letter-spacing="0.11em" style="text-transform:uppercase">Convection volume per session · HD vs HV-HDF</text>
+<g><g>
+<text x="24" y="78" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="12" font-weight="600" fill="#55616E" text-anchor="start">HD</text>
+<rect x="146" y="64" width="280" height="18" rx="9" fill="rgba(16, 48, 107, 0.10)"/>
+<rect x="146" y="64" width="4" height="18" rx="9" fill="#5D8AD4"/>
+<text x="436" y="77" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="12" font-weight="500" fill="#8A95A1" text-anchor="start" font-variant-numeric='tabular-nums'>0 L</text>
+</g>
+<g>
+<text x="24" y="120" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="12" font-weight="700" fill="#10306B" text-anchor="start">HV-HDF</text>
+<rect x="146" y="106" width="280" height="18" rx="9" fill="rgba(16, 48, 107, 0.10)"/>
+<rect x="146" y="106" width="257.6" height="18" rx="9" fill="#10306B"/>
+<text x="436" y="119" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="12" font-weight="700" fill="#0F141A" text-anchor="start" font-variant-numeric='tabular-nums'>23 L</text>
+</g></g>
+<g>
+<rect x="24" y="158" width="205.60000000000002" height="20" rx="10" fill="rgba(16,48,107,0.07)" stroke="rgba(16, 48, 107, 0.10)" stroke-width="1"/>
+<text x="126.80000000000001" y="171.5" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9.5" font-weight="600" fill="#55616E" text-anchor="middle" letter-spacing="0.02em">CONVINCE 2023 · PMID 37326323</text>
+</g>
+</svg>

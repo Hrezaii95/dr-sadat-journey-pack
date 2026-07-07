@@ -1,0 +1,268 @@
+<svg viewBox="0 0 1000 680" width="1000" height="680" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="nephron-title nephron-desc" font-family="'Segoe UI', Arial, sans-serif">
+  <title id="nephron-title">Nephron schematic — the kidney's filtration unit</title>
+  <desc id="nephron-desc">Cross-section diagram of a single nephron showing the glomerulus inside Bowman's capsule, the proximal convoluted tubule, the descending and ascending limbs of the loop of Henle, the distal convoluted tubule, and the collecting duct, with blood entering via the afferent arteriole and filtrate flowing onward to the collecting duct.</desc>
+
+  <defs>
+    <clipPath id="clip-canvas"><rect x="0" y="0" width="1000" height="680" rx="0"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#clip-canvas)">
+  <!-- ============ CANVAS ============ -->
+  <rect x="0" y="0" width="1000" height="680" fill="#E8ECEF"/>
+
+  <!-- ============ CORTEX / MEDULLA ZONE BANDS ============ -->
+  <rect x="0" y="0" width="1000" height="270" fill="#F7F9FB"/>
+  <rect x="0" y="270" width="1000" height="410" fill="#EEF2F5"/>
+  <line x1="0" y1="270" x2="1000" y2="270" stroke="#9FB0C8" stroke-width="1" stroke-dasharray="2 5" opacity="0.6"/>
+  <text x="964" y="28" text-anchor="end" font-size="14" font-weight="700" fill="#8A95A1" letter-spacing="0.08em">CORTEX</text>
+  <text x="964" y="290" text-anchor="end" font-size="14" font-weight="700" fill="#8A95A1" letter-spacing="0.08em">MEDULLA</text>
+
+  <!-- ============ TITLE BLOCK ============ -->
+  <text x="40" y="34" font-size="21" font-weight="700" fill="#10306B">The Nephron</text>
+  <text x="40" y="54" font-size="12.5" fill="#55616E">The kidney's functional filtration unit — what dialysis replaces</text>
+
+  <!-- ======================================================================
+       NEPHRON STRUCTURE — single coherent looped tube, left column (x 90–330)
+       flowing: glomerulus → PCT → descending limb → hairpin → ascending limb
+       → DCT → collecting duct (offset right, x=250, clearly separate tube)
+       Whole structure shifted down (+38) to clear the title block.
+  ======================================================================= -->
+  <g transform="translate(0 38)">
+
+  <!-- Peritubular capillary / vasa recta hint (background) -->
+  <path d="M 60 260 C 50 340, 50 430, 62 490" fill="none" stroke="#9BC0F2" stroke-width="1" opacity="0.3"/>
+  <path d="M 400 260 C 410 340, 410 430, 398 490" fill="none" stroke="#9BC0F2" stroke-width="1" opacity="0.3"/>
+
+  <!-- ============ AFFERENT ARTERIOLE (blood IN) ============ -->
+  <path d="M 56 118 C 74 116, 86 116, 98 120" fill="none" stroke="#DA4A54" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 86 120 L 98 120 L 92 114 M 98 120 L 92 126" fill="none" stroke="#DA4A54" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="58" y="104" font-size="10.5" font-weight="700" fill="#DA4A54" text-anchor="start">afferent</text>
+
+  <!-- ============ BOWMAN'S CAPSULE (outer cup, drawn as a clear double-wall shell) ============ -->
+  <path d="M 100 78
+           C 66 82, 44 108, 44 140
+           C 44 172, 68 198, 104 202
+           C 136 205, 166 192, 178 166
+           C 189 144, 184 114, 160 94
+           C 142 79, 120 75, 100 78 Z"
+        fill="#FFFFFF" stroke="#10306B" stroke-width="2.5" />
+  <!-- capsular (urinary) space — thin gap between capsule wall and tuft -->
+  <path d="M 104 88
+           C 78 92, 60 114, 60 140
+           C 60 166, 80 186, 108 190
+           C 134 193, 156 182, 166 162
+           C 175 144, 171 120, 152 104
+           C 137 91, 118 86, 104 88 Z"
+        fill="#F7F9FB" stroke="#9FB0C8" stroke-width="1" stroke-dasharray="1.5 3"/>
+
+  <!-- ============ GLOMERULUS — dense rounded capillary tuft ball ============ -->
+  <!-- soft tissue tint behind the tuft -->
+  <ellipse cx="115" cy="140" rx="46" ry="42" fill="#DA4A54" opacity="0.07"/>
+  <!-- tuft: many short, clean, rounded capillary loops packed into a ball -->
+  <g stroke="#DA4A54" stroke-width="3.2" stroke-linecap="round" fill="none">
+    <path d="M 88 112 C 80 118, 80 128, 90 132"/>
+    <path d="M 90 132 C 100 136, 106 128, 100 120"/>
+    <path d="M 100 120 C 96 112, 104 106, 112 110"/>
+    <path d="M 112 110 C 120 114, 120 124, 112 128"/>
+    <path d="M 112 128 C 120 132, 130 128, 130 118"/>
+    <path d="M 130 118 C 130 108, 122 102, 114 104"/>
+    <path d="M 84 138 C 78 146, 82 156, 92 158"/>
+    <path d="M 92 158 C 102 160, 108 152, 102 144"/>
+    <path d="M 102 144 C 108 150, 118 150, 122 142"/>
+    <path d="M 122 142 C 128 152, 140 152, 144 142"/>
+    <path d="M 144 142 C 148 132, 142 122, 132 122"/>
+    <path d="M 132 122 C 140 118, 146 108, 140 100"/>
+    <path d="M 100 158 C 96 166, 102 174, 112 174"/>
+    <path d="M 112 174 C 122 174, 128 166, 122 158"/>
+    <path d="M 122 158 C 130 162, 140 158, 140 148"/>
+    <path d="M 76 118 C 70 126, 72 136, 82 140"/>
+  </g>
+
+  <!-- ============ EFFERENT ARTERIOLE (blood OUT, narrower than afferent) ============ -->
+  <path d="M 158 96 C 172 82, 186 72, 202 66" fill="none" stroke="#DA4A54" stroke-width="4.2" stroke-linecap="round"/>
+  <path d="M 192 69 L 202 66 L 198 74 M 202 66 L 193 63" fill="none" stroke="#DA4A54" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="206" y="64" font-size="10.5" font-weight="700" fill="#DA4A54">efferent</text>
+
+  <!-- ============ FILTRATION ARROW: blood → filtrate ============ -->
+  <path d="M 168 170 C 178 182, 188 190, 198 194" fill="none" stroke="#6CCB3E" stroke-width="3.4" stroke-linecap="round"/>
+  <path d="M 189 190 L 198 194 L 196 184 M 198 194 L 190 199" fill="none" stroke="#6CCB3E" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="170" y="214" font-size="11.5" font-weight="700" fill="#2E8E54">filtration</text>
+
+  <!-- ============ PROXIMAL CONVOLUTED TUBULE (PCT) — tight dense coil ============ -->
+  <g fill="none" stroke="#10306B" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 200 196
+             C 218 184, 232 186, 238 200
+             C 244 214, 234 226, 220 224
+             C 208 222, 204 210, 214 204
+             C 222 199, 232 204, 230 214
+             C 228 222, 216 224, 210 216"/>
+  </g>
+  <!-- PCT lumen hint -->
+  <path d="M 200 196 C 218 184, 232 186, 238 200 C 244 214, 234 226, 220 224"
+        fill="none" stroke="#9BC0F2" stroke-width="1.3" stroke-linecap="round" opacity="0.75"/>
+
+  <!-- ============ DESCENDING LIMB (thin, water-permeable, into medulla) ============ -->
+  <path d="M 214 220 C 206 250, 200 310, 198 380 C 197 430, 198 470, 204 498"
+        fill="none" stroke="#10306B" stroke-width="4.2" stroke-linecap="round"/>
+  <path d="M 200 300 L 198 312 L 193 302 M 198 312 L 204 303" fill="none" stroke="#5D8AD4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+  <path d="M 198 400 L 198 412 L 193 403 M 198 412 L 204 403" fill="none" stroke="#5D8AD4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+
+  <!-- ============ LOOP OF HENLE — HAIRPIN TURN (deep medulla, close-paired limbs) ============ -->
+  <path d="M 204 498 C 210 522, 224 536, 246 536 C 268 536, 282 522, 286 500"
+        fill="none" stroke="#10306B" stroke-width="4.2" stroke-linecap="round"/>
+  <path d="M 240 533 L 252 536 L 244 528 M 252 536 L 246 544" fill="none" stroke="#6CCB3E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- ============ ASCENDING LIMB (thick, water-impermeable, back up) — paired tight next to descending ============ -->
+  <path d="M 286 500 C 290 470, 292 430, 292 382 C 292 320, 294 260, 300 226"
+        fill="none" stroke="#1C75BC" stroke-width="6.2" stroke-linecap="round"/>
+  <path d="M 292 420 L 291 408 L 298 416 M 291 408 L 285 416" fill="none" stroke="#9BC0F2" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 294 300 L 295 288 L 301 297 M 295 288 L 288 296" fill="none" stroke="#9BC0F2" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- ============ MACULA DENSA marker (junction near vascular pole) ============ -->
+  <circle cx="176" cy="180" r="4.5" fill="#E39A3B"/>
+
+  <!-- ============ DISTAL CONVOLUTED TUBULE (DCT) — looser coil, cortex ============ -->
+  <g fill="none" stroke="#1C75BC" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 300 226
+             C 306 208, 320 198, 334 202
+             C 348 206, 352 220, 342 228
+             C 334 234, 324 230, 326 220
+             C 328 212, 338 212, 340 220"/>
+  </g>
+
+  <!-- ============ CONNECTING TUBULE → COLLECTING DUCT (visually offset, separate tube) ============ -->
+  <path d="M 340 220 C 352 214, 362 202, 362 188 C 362 176, 356 168, 346 164"
+        fill="none" stroke="#1C75BC" stroke-width="4.4" stroke-linecap="round"/>
+
+  <!-- ============ COLLECTING DUCT — offset right of the loop, clearly its own tube ============ -->
+  <path d="M 346 164 C 362 158, 378 156, 388 160"
+        fill="none" stroke="#10306B" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 388 160 L 388 580"
+        fill="none" stroke="#10306B" stroke-width="10" stroke-linecap="round"/>
+  <path d="M 388 168 L 388 574" fill="none" stroke="#A9CDF0" stroke-width="3.2" stroke-linecap="round" opacity="0.9"/>
+  <path d="M 388 260 L 388 274 L 382 264 M 388 274 L 394 264" fill="none" stroke="#6CCB3E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 388 380 L 388 394 L 382 384 M 388 394 L 394 384" fill="none" stroke="#6CCB3E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 388 480 L 388 494 L 382 484 M 388 494 L 394 484" fill="none" stroke="#6CCB3E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- papilla / renal pelvis opening -->
+  <path d="M 372 580 C 376 596, 400 596, 404 580" fill="none" stroke="#10306B" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M 388 580 L 388 600 L 382 591 M 388 600 L 394 591" fill="none" stroke="#6CCB3E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="388" y="616" text-anchor="middle" font-size="10.5" fill="#55616E">to renal pelvis</text>
+
+  <!-- faint bracket showing loop-of-Henle as one unit, distinguishing it from the CD beside it -->
+  <path d="M 176 224 C 150 340, 150 460, 176 502" fill="none" stroke="#9FB0C8" stroke-width="1" stroke-dasharray="2 4" opacity="0.55"/>
+  <text x="120" y="368" font-size="10.5" fill="#8A95A1" transform="rotate(-90 120 368)" text-anchor="middle">loop of Henle</text>
+
+  <!-- ============ NUMBERED CALLOUT MARKERS ============ -->
+  <g font-size="12.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+    <circle cx="115" cy="140" r="12" fill="#10306B" stroke="#FFFFFF" stroke-width="1.5"/>
+    <text x="115" y="144.5">1</text>
+
+    <circle cx="219" cy="204" r="12" fill="#10306B" stroke="#FFFFFF" stroke-width="1.5"/>
+    <text x="219" y="208.5">2</text>
+
+    <circle cx="198" cy="360" r="12" fill="#10306B" stroke="#FFFFFF" stroke-width="1.5"/>
+    <text x="198" y="364.5">3</text>
+
+    <circle cx="246" cy="536" r="12" fill="#10306B" stroke="#FFFFFF" stroke-width="1.5"/>
+    <text x="246" y="540.5">4</text>
+
+    <circle cx="292" cy="360" r="12" fill="#10306B" stroke="#FFFFFF" stroke-width="1.5"/>
+    <text x="292" y="364.5">5</text>
+
+    <circle cx="334" cy="202" r="12" fill="#10306B" stroke="#FFFFFF" stroke-width="1.5"/>
+    <text x="334" y="206.5">6</text>
+
+    <circle cx="388" cy="330" r="12" fill="#10306B" stroke="#FFFFFF" stroke-width="1.5"/>
+    <text x="388" y="334.5">7</text>
+  </g>
+
+  <!-- ============ LEADER LINES — orthogonal elbows, ordered top-to-bottom, no crossing ============ -->
+  <g stroke="#8A95A1" stroke-width="1.2" fill="none" opacity="0.9">
+    <!-- 1 Glomerulus -> row 1 -->
+    <path d="M 127 140 L 480 140 L 560 108"/>
+    <!-- 2 PCT -> row 2 -->
+    <path d="M 231 204 L 480 204 L 560 158"/>
+    <!-- 6 DCT -> row 3 -->
+    <path d="M 346 202 L 500 202 L 500 208 L 560 208"/>
+    <!-- 3 Descending limb -> row 4 -->
+    <path d="M 210 360 L 480 360 L 480 260 L 560 260"/>
+    <!-- 5 Ascending limb -> row 5 -->
+    <path d="M 304 360 L 500 360 L 500 312 L 560 312"/>
+    <!-- 7 Collecting duct -> row 6 -->
+    <path d="M 400 330 L 520 330 L 520 380 L 560 380"/>
+    <!-- 4 Hairpin -> row 7 -->
+    <path d="M 258 536 L 500 536 L 500 470 L 560 470"/>
+  </g>
+
+  <!-- ============ LABEL CARDS (right column legend) ============ -->
+  <g font-family="'Segoe UI', Arial, sans-serif">
+    <!-- 1 Glomerulus -->
+    <rect x="560" y="88" width="400" height="40" rx="8" fill="#FFFFFF" stroke="#10306B" stroke-width="1"/>
+    <circle cx="580" cy="108" r="10" fill="#10306B"/>
+    <text x="580" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">1</text>
+    <text x="598" y="103" font-size="13.5" font-weight="700" fill="#10306B">Glomerulus &amp; Bowman's capsule</text>
+    <text x="598" y="119" font-size="11.5" fill="#55616E">Capillary tuft filters blood plasma into capsular space</text>
+
+    <!-- 2 PCT -->
+    <rect x="560" y="138" width="400" height="40" rx="8" fill="#FFFFFF" stroke="#10306B" stroke-width="1"/>
+    <circle cx="580" cy="158" r="10" fill="#10306B"/>
+    <text x="580" y="162" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">2</text>
+    <text x="598" y="153" font-size="13.5" font-weight="700" fill="#10306B">Proximal convoluted tubule</text>
+    <text x="598" y="169" font-size="11.5" fill="#55616E">Bulk reabsorption — glucose, amino acids, ~65% Na⁺/H₂O</text>
+
+    <!-- 6 DCT -->
+    <rect x="560" y="188" width="400" height="40" rx="8" fill="#FFFFFF" stroke="#1C75BC" stroke-width="1"/>
+    <circle cx="580" cy="208" r="10" fill="#1C75BC"/>
+    <text x="580" y="212" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">6</text>
+    <text x="598" y="203" font-size="13.5" font-weight="700" fill="#10306B">Distal convoluted tubule</text>
+    <text x="598" y="219" font-size="11.5" fill="#55616E">Fine-tunes Na⁺/K⁺; site of aldosterone action</text>
+
+    <!-- 3 Descending limb -->
+    <rect x="560" y="240" width="400" height="40" rx="8" fill="#FFFFFF" stroke="#1C75BC" stroke-width="1"/>
+    <circle cx="580" cy="260" r="10" fill="#1C75BC"/>
+    <text x="580" y="264" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">3</text>
+    <text x="598" y="255" font-size="13.5" font-weight="700" fill="#10306B">Descending limb, loop of Henle</text>
+    <text x="598" y="271" font-size="11.5" fill="#55616E">Thin, water-permeable — concentrates filtrate</text>
+
+    <!-- 5 Ascending limb -->
+    <rect x="560" y="292" width="400" height="40" rx="8" fill="#FFFFFF" stroke="#1C75BC" stroke-width="1"/>
+    <circle cx="580" cy="312" r="10" fill="#1C75BC"/>
+    <text x="580" y="316" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">5</text>
+    <text x="598" y="307" font-size="13.5" font-weight="700" fill="#10306B">Ascending limb, loop of Henle</text>
+    <text x="598" y="323" font-size="11.5" fill="#55616E">Thick, water-impermeable — pumps out Na⁺/K⁺/Cl⁻</text>
+
+    <!-- 7 Collecting duct -->
+    <rect x="560" y="360" width="400" height="40" rx="8" fill="#FFFFFF" stroke="#10306B" stroke-width="1"/>
+    <circle cx="580" cy="380" r="10" fill="#10306B"/>
+    <text x="580" y="384" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">7</text>
+    <text x="598" y="375" font-size="13.5" font-weight="700" fill="#10306B">Collecting duct</text>
+    <text x="598" y="391" font-size="11.5" fill="#55616E">ADH-regulated final water reabsorption to renal pelvis</text>
+
+    <!-- 4 Hairpin -->
+    <rect x="560" y="450" width="400" height="40" rx="8" fill="#FFFFFF" stroke="#10306B" stroke-width="1"/>
+    <circle cx="580" cy="470" r="10" fill="#10306B"/>
+    <text x="580" y="474" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">4</text>
+    <text x="598" y="465" font-size="13.5" font-weight="700" fill="#10306B">Loop of Henle — hairpin turn</text>
+    <text x="598" y="481" font-size="11.5" fill="#55616E">Deepest point in the medulla; countercurrent turn</text>
+  </g>
+
+  <!-- ============ BLOOD / FILTRATE FLOW LEGEND ============ -->
+  <g font-size="11" fill="#55616E">
+    <line x1="560" y1="530" x2="584" y2="530" stroke="#DA4A54" stroke-width="4" stroke-linecap="round"/>
+    <text x="592" y="534">Blood flow (afferent → efferent)</text>
+    <line x1="560" y1="550" x2="584" y2="550" stroke="#6CCB3E" stroke-width="4" stroke-linecap="round"/>
+    <text x="592" y="554">Filtrate flow (glomerulus → collecting duct)</text>
+  </g>
+
+  <!-- ============ STAT CHIP — honest tie ============ -->
+  <g>
+    <rect x="560" y="572" width="400" height="34" rx="17" fill="#10306B"/>
+    <text x="580" y="594" font-size="13.5" font-weight="700" fill="#FFFFFF" font-variant-numeric="tabular-nums">~180 L/day filtered · ~1.5 L/day excreted</text>
+    <text x="945" y="594" font-size="9.5" fill="#9BC0F2" text-anchor="end">physiology, general</text>
+  </g>
+
+  <!-- ============ CAPTION FOOTER ============ -->
+  <text x="40" y="626" font-size="11" fill="#55616E">One nephron of ~1,000,000 per kidney · dialysis approximates this filtration extracorporeally</text>
+  </g>
+  </g>
+</svg>

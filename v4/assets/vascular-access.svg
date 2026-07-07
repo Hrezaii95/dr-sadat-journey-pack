@@ -1,0 +1,270 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 440" width="1120" height="440" role="img"
+     aria-labelledby="va-title va-desc" font-family="General Sans, system-ui, sans-serif">
+  <title id="va-title">Vascular access types for haemodialysis</title>
+  <desc id="va-desc">Three schematic cross-sections comparing arteriovenous fistula, arteriovenous graft, and central venous catheter access, each with typical achievable blood flow and relative risk.</desc>
+
+  <rect x="0" y="0" width="1120" height="440" fill="#FFFFFF"/>
+  <text x="560" y="28" font-size="15" font-weight="600" fill="#10306B" text-anchor="middle">Vascular Access for Haemodialysis</text>
+  <text x="560" y="45" font-size="10.5" fill="#55616E" text-anchor="middle">Three ways to reach the bloodstream — ranked by durability and infection risk</text>
+
+  <!-- panel dividers -->
+  <line x1="326" y1="66" x2="326" y2="378" stroke="rgba(16,48,107,0.08)" stroke-width="1"/>
+  <line x1="700" y1="66" x2="700" y2="378" stroke="rgba(16,48,107,0.08)" stroke-width="1"/>
+
+  <!-- ================= PANEL 1: AVF ================= -->
+  <g>
+    <text x="163" y="80" font-size="12" font-weight="700" fill="#10306B" text-anchor="middle">1 · AV Fistula</text>
+    <text x="163" y="94" font-size="8.5" fill="#55616E" text-anchor="middle">artery joined directly to vein</text>
+
+    <!-- forearm silhouette (anchors the vessels in real anatomy) -->
+    <path d="M 30 116 C 60 110, 260 118, 292 140 L 300 300 C 270 320, 70 322, 40 302 Z"
+          fill="#F7F9FB" stroke="rgba(16,48,107,0.10)" stroke-width="1.5"/>
+    <text x="163" y="128" font-size="7.5" fill="#8A95A1" text-anchor="middle">forearm, volar view</text>
+
+    <!-- Artery: deep, runs proximal (top) to distal (bottom), warmer tone -->
+    <path d="M 150 152 C 152 190, 156 226, 162 258" fill="none" stroke="#E39A3B" stroke-width="14" stroke-linecap="round"/>
+    <path d="M 150 152 C 152 190, 156 226, 162 258" fill="none" stroke="#F6C77F" stroke-width="6" stroke-linecap="round"/>
+
+    <!-- Native vein: runs alongside, more superficial, thinner pre-fistula -->
+    <path d="M 224 156 C 220 190, 214 222, 206 250" fill="none" stroke="#1C75BC" stroke-width="9" stroke-linecap="round"/>
+    <path d="M 224 156 C 220 190, 214 222, 206 250" fill="none" stroke="#9BC0F2" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- Side-to-side surgical connection: short anastomotic bridge between artery and vein -->
+    <path d="M 172 232 C 182 236, 192 236, 200 232" fill="none" stroke="#10306B" stroke-width="12" stroke-linecap="round"/>
+    <path d="M 172 232 C 182 236, 192 236, 200 232" fill="none" stroke="#8FB4E4" stroke-width="5" stroke-linecap="round"/>
+    <!-- anastomosis join markers (surgical suture ring, teaching detail) -->
+    <circle cx="172" cy="232" r="4" fill="none" stroke="#10306B" stroke-width="1.5"/>
+    <circle cx="200" cy="232" r="4" fill="none" stroke="#10306B" stroke-width="1.5"/>
+
+    <!-- Arterialised outflow vein: dilates + thickens above the anastomosis, tortuous "matured" look -->
+    <path d="M 206 250 C 208 224, 200 200, 216 176 C 226 162, 218 148, 224 128"
+          fill="none" stroke="#1C75BC" stroke-width="17" stroke-linecap="round"/>
+    <path d="M 206 250 C 208 224, 200 200, 216 176 C 226 162, 218 148, 224 128"
+          fill="none" stroke="#5D8AD4" stroke-width="7.5" stroke-linecap="round"/>
+
+    <!-- Thrill marks at the anastomosis (palpable turbulence — teaching cue) -->
+    <path d="M 178 220 q 5 -5 10 0" fill="none" stroke="#6CCB3E" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M 182 214 q 6 -6 12 0" fill="none" stroke="#6CCB3E" stroke-width="1.5" stroke-linecap="round"/>
+
+    <!-- Needle sites on the arterialised (matured) vein segment -->
+    <g>
+      <line x1="204" y1="180" x2="222" y2="168" stroke="#10306B" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="222" cy="168" r="2.6" fill="#10306B"/>
+      <line x1="221" y1="144" x2="240" y2="134" stroke="#10306B" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="240" cy="134" r="2.6" fill="#10306B"/>
+    </g>
+
+    <!-- leader lines + labels -->
+    <line x1="150" y1="160" x2="112" y2="150" stroke="#55616E" stroke-width="1"/>
+    <text x="110" y="147" font-size="8.5" font-weight="600" fill="#E39A3B" text-anchor="end">Artery</text>
+
+    <line x1="224" y1="156" x2="252" y2="146" stroke="#55616E" stroke-width="1"/>
+    <text x="254" y="143" font-size="8.5" font-weight="600" fill="#1C75BC" text-anchor="start">Vein (native)</text>
+
+    <line x1="186" y1="234" x2="130" y2="252" stroke="#55616E" stroke-width="1"/>
+    <text x="128" y="264" font-size="8" fill="#55616E" text-anchor="end">anastomosis (surgical join)</text>
+
+    <line x1="222" y1="168" x2="252" y2="176" stroke="#55616E" stroke-width="1"/>
+    <text x="254" y="180" font-size="7.6" fill="#55616E" text-anchor="start">arterial needle</text>
+
+    <line x1="240" y1="134" x2="270" y2="128" stroke="#55616E" stroke-width="1"/>
+    <text x="272" y="126" font-size="7.6" fill="#55616E" text-anchor="start">venous needle</text>
+
+    <!-- stat chips -->
+    <g>
+      <rect x="63" y="312" width="76" height="20" rx="10" fill="rgba(16,48,107,0.07)" stroke="rgba(16,48,107,0.10)" stroke-width="1"/>
+      <text x="101" y="325.5" font-size="9" font-weight="600" fill="#10306B" text-anchor="middle" font-variant-numeric="tabular-nums">300–500 mL/min</text>
+    </g>
+    <g>
+      <circle cx="220" cy="322" r="6" fill="#2E8E54"/>
+      <text x="232" y="325.5" font-size="9" font-weight="600" fill="#2E8E54">Lowest risk</text>
+    </g>
+    <g>
+      <rect x="60" y="344" width="206" height="18" rx="9" fill="rgba(227,154,59,0.12)" stroke="#E39A3B" stroke-width="1" stroke-dasharray="3 3"/>
+      <text x="163" y="356.5" font-size="8" font-weight="600" fill="#E39A3B" text-anchor="middle">IFU-pending · maturation 6–8 wk</text>
+    </g>
+  </g>
+
+  <!-- ================= PANEL 2: AV GRAFT ================= -->
+  <g>
+    <text x="489" y="80" font-size="12" font-weight="700" fill="#10306B" text-anchor="middle">2 · AV Graft</text>
+    <text x="489" y="94" font-size="8.5" fill="#55616E" text-anchor="middle">synthetic loop bridges artery to vein</text>
+
+    <!-- forearm silhouette -->
+    <path d="M 356 116 C 386 110, 586 118, 618 140 L 626 300 C 596 320, 396 322, 366 302 Z"
+          fill="#F7F9FB" stroke="rgba(16,48,107,0.10)" stroke-width="1.5"/>
+    <text x="489" y="128" font-size="7.5" fill="#8A95A1" text-anchor="middle">forearm, volar view</text>
+
+    <!-- Artery deep, lower segment -->
+    <path d="M 424 258 C 418 232, 416 210, 420 188" fill="none" stroke="#E39A3B" stroke-width="14" stroke-linecap="round"/>
+    <path d="M 424 258 C 418 232, 416 210, 420 188" fill="none" stroke="#F6C77F" stroke-width="6" stroke-linecap="round"/>
+
+    <!-- Vein, separate location -->
+    <path d="M 556 258 C 562 232, 564 210, 560 188" fill="none" stroke="#1C75BC" stroke-width="13" stroke-linecap="round"/>
+    <path d="M 556 258 C 562 232, 564 210, 560 188" fill="none" stroke="#9BC0F2" stroke-width="5.5" stroke-linecap="round"/>
+
+    <!-- Graft loop: synthetic conduit tunneled subcutaneously between the two vessels, distinct knit texture -->
+    <path d="M 420 188 C 424 156, 442 132, 470 122 C 490 115, 500 115, 508 122 C 536 132, 554 156, 560 188"
+          fill="none" stroke="#55616E" stroke-width="15" stroke-linecap="round"/>
+    <path d="M 420 188 C 424 156, 442 132, 470 122 C 490 115, 500 115, 508 122 C 536 132, 554 156, 560 188"
+          fill="none" stroke="#D7DEE5" stroke-width="7" stroke-linecap="round"/>
+    <!-- graft texture: knit-like hatching so it reads as synthetic tube, not vessel -->
+    <g stroke="#8A95A1" stroke-width="1" opacity="0.7">
+      <line x1="427" y1="168" x2="437" y2="172"/>
+      <line x1="438" y1="146" x2="448" y2="151"/>
+      <line x1="456" y1="128" x2="465" y2="134"/>
+      <line x1="478" y1="118" x2="483" y2="126"/>
+      <line x1="500" y1="118" x2="497" y2="126"/>
+      <line x1="522" y1="128" x2="513" y2="134"/>
+      <line x1="541" y1="146" x2="532" y2="151"/>
+      <line x1="553" y1="168" x2="543" y2="172"/>
+    </g>
+
+    <!-- anastomoses (graft sewn end-to-side onto artery and vein) -->
+    <circle cx="420" cy="188" r="7" fill="#FFFFFF" stroke="#10306B" stroke-width="2"/>
+    <circle cx="560" cy="188" r="7" fill="#FFFFFF" stroke="#10306B" stroke-width="2"/>
+
+    <!-- Needle sites directly into the graft body (standard cannulation technique) -->
+    <g>
+      <line x1="458" y1="140" x2="452" y2="120" stroke="#10306B" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="452" cy="120" r="2.6" fill="#10306B"/>
+      <line x1="522" y1="140" x2="528" y2="120" stroke="#10306B" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="528" cy="120" r="2.6" fill="#10306B"/>
+    </g>
+
+    <line x1="424" y1="258" x2="392" y2="272" stroke="#55616E" stroke-width="1"/>
+    <text x="390" y="284" font-size="8.5" font-weight="600" fill="#E39A3B" text-anchor="end">Artery</text>
+
+    <line x1="556" y1="258" x2="588" y2="272" stroke="#55616E" stroke-width="1"/>
+    <text x="590" y="284" font-size="8.5" font-weight="600" fill="#1C75BC" text-anchor="start">Vein</text>
+
+    <line x1="470" y1="122" x2="452" y2="152" stroke="#55616E" stroke-width="1"/>
+    <text x="450" y="164" font-size="7.6" fill="#55616E" text-anchor="end">PTFE graft loop</text>
+    <text x="450" y="174" font-size="7.6" fill="#55616E" text-anchor="end">(tunneled under skin)</text>
+
+    <line x1="452" y1="120" x2="452" y2="106" stroke="#55616E" stroke-width="1"/>
+    <text x="452" y="100" font-size="7.6" fill="#55616E" text-anchor="middle">arterial needle</text>
+
+    <line x1="528" y1="120" x2="528" y2="106" stroke="#55616E" stroke-width="1"/>
+    <text x="528" y="100" font-size="7.6" fill="#55616E" text-anchor="middle">venous needle</text>
+
+    <g>
+      <rect x="429" y="312" width="76" height="20" rx="10" fill="rgba(16,48,107,0.07)" stroke="rgba(16,48,107,0.10)" stroke-width="1"/>
+      <text x="467" y="325.5" font-size="9" font-weight="600" fill="#10306B" text-anchor="middle" font-variant-numeric="tabular-nums">250–400 mL/min</text>
+    </g>
+    <g>
+      <circle cx="540" cy="322" r="6" fill="#E39A3B"/>
+      <text x="552" y="325.5" font-size="9" font-weight="600" fill="#E39A3B">Caution</text>
+    </g>
+    <g>
+      <rect x="401" y="344" width="176" height="18" rx="9" fill="rgba(227,154,59,0.12)" stroke="#E39A3B" stroke-width="1" stroke-dasharray="3 3"/>
+      <text x="489" y="356.5" font-size="8" font-weight="600" fill="#E39A3B" text-anchor="middle">IFU-pending · use ~2–4 wk</text>
+    </g>
+  </g>
+
+  <!-- ================= PANEL 3: CVC ================= -->
+  <g transform="translate(48,0)">
+    <text x="815" y="80" font-size="12" font-weight="700" fill="#10306B" text-anchor="middle">3 · Central Venous Catheter</text>
+    <text x="815" y="94" font-size="8.5" fill="#55616E" text-anchor="middle">tunneled catheter into a central vein</text>
+
+    <!-- neck + upper-chest silhouette to anchor the anatomy -->
+    <path d="M 738 112 C 758 104, 778 102, 793 104 C 810 102, 830 104, 850 112
+             L 878 300 C 848 322, 738 322, 708 300 Z"
+          fill="#F7F9FB" stroke="rgba(16,48,107,0.10)" stroke-width="1.5"/>
+    <!-- neck taper -->
+    <path d="M 764 112 C 768 100, 778 92, 793 92 C 808 92, 818 100, 822 112" fill="#F7F9FB" stroke="rgba(16,48,107,0.10)" stroke-width="1.5"/>
+    <text x="793" y="330" font-size="7.5" fill="#8A95A1" text-anchor="middle">neck &amp; upper chest, sagittal view</text>
+
+    <!-- clavicle line for orientation -->
+    <path d="M 716 154 Q 793 162 870 154" fill="none" stroke="rgba(16,48,107,0.12)" stroke-width="1.5" stroke-dasharray="3 2"/>
+
+    <!-- internal jugular / central vein descending toward heart, navy -->
+    <path d="M 806 112 C 804 154, 800 196, 794 236 C 790 266, 784 288, 776 304"
+          fill="none" stroke="#10306B" stroke-width="17" stroke-linecap="round"/>
+    <path d="M 806 112 C 804 154, 800 196, 794 236 C 790 266, 784 288, 776 304"
+          fill="none" stroke="#5D8AD4" stroke-width="7.5" stroke-linecap="round"/>
+
+    <!-- heart / right atrium at the base, drawn as a simple rounded chamber, not a valentine -->
+    <path d="M 750 300 C 750 286, 758 276, 773 274 C 783 273, 790 276, 794 282
+             C 798 276, 806 273, 816 274 C 830 276, 838 286, 838 300
+             C 838 320, 816 336, 794 344 C 772 336, 750 320, 750 300 Z"
+          fill="rgba(16,48,107,0.05)" stroke="#10306B" stroke-width="1.5"/>
+    <text x="794" y="304" font-size="7" fill="#10306B" text-anchor="middle" font-weight="600">right atrium</text>
+
+    <!-- tunneled catheter: dual lumen, exits skin on chest wall, subcutaneous tunnel, cuff, then punctures vein -->
+    <!-- external (outside skin) segment -->
+    <path d="M 900 200 C 888 200, 876 199, 866 196" fill="none" stroke="#55616E" stroke-width="9" stroke-linecap="round"/>
+    <path d="M 900 200 C 888 200, 876 199, 866 196" fill="none" stroke="#EEF2F5" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- subcutaneous tunnel segment -->
+    <path d="M 866 196 C 850 191, 834 188, 820 182" fill="none" stroke="#55616E" stroke-width="9" stroke-linecap="round"/>
+    <path d="M 866 196 C 850 191, 834 188, 820 182" fill="none" stroke="#EEF2F5" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- Dacron cuff (anti-infection barrier, sits in the tunnel) -->
+    <ellipse cx="846" cy="192" rx="7" ry="5" fill="none" stroke="#DA4A54" stroke-width="1.5" stroke-dasharray="2 1.5" transform="rotate(12 846 192)"/>
+
+    <!-- catheter enters central vein and travels to tip near RA, two lumens shown staggered -->
+    <path d="M 820 182 C 812 168, 806 150, 802 132" fill="none" stroke="#55616E" stroke-width="9" stroke-linecap="round"/>
+    <path d="M 820 182 C 812 168, 806 150, 802 132" fill="none" stroke="#EEF2F5" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 802 132 C 800 168, 796 210, 790 250 C 786 270, 782 284, 778 296"
+          fill="none" stroke="#DA4A54" stroke-width="3.4" stroke-linecap="round"/>
+    <path d="M 798 130 C 796 168, 792 212, 786 252 C 782 272, 777 286, 773 298"
+          fill="none" stroke="#E39A3B" stroke-width="3.4" stroke-linecap="round"/>
+    <circle cx="778" cy="296" r="2.4" fill="#DA4A54"/>
+    <circle cx="773" cy="298" r="2.4" fill="#E39A3B"/>
+
+    <!-- external hub: two color-coded lumen ports outside the body, on the right -->
+    <rect x="900" y="192" width="34" height="12" rx="6" fill="#FFFFFF" stroke="#DA4A54" stroke-width="1.5"/>
+    <rect x="900" y="207" width="34" height="12" rx="6" fill="#FFFFFF" stroke="#E39A3B" stroke-width="1.5"/>
+
+    <!-- all labels stacked cleanly to the right of the panel, no overlap with title or other panels -->
+    <line x1="806" y1="118" x2="936" y2="108" stroke="#55616E" stroke-width="1"/>
+    <text x="938" y="111" font-size="7.6" fill="#55616E" text-anchor="start">int. jugular vein → SVC</text>
+
+    <line x1="934" y1="198" x2="944" y2="198" stroke="#DA4A54" stroke-width="1"/>
+    <text x="938" y="201" font-size="7.6" fill="#DA4A54" text-anchor="start">arterial (red) hub port</text>
+
+    <line x1="934" y1="213" x2="944" y2="213" stroke="#E39A3B" stroke-width="1"/>
+    <text x="938" y="216" font-size="7.6" fill="#E39A3B" text-anchor="start">venous (yellow) hub port</text>
+
+    <line x1="846" y1="192" x2="936" y2="230" stroke="#55616E" stroke-width="1"/>
+    <text x="938" y="233" font-size="7.6" fill="#55616E" text-anchor="start">Dacron cuff — infection barrier</text>
+
+    <line x1="778" y1="296" x2="936" y2="250" stroke="#55616E" stroke-width="1"/>
+    <text x="938" y="253" font-size="7.6" fill="#55616E" text-anchor="start">catheter tip at cavoatrial junction</text>
+
+    <g>
+      <rect x="753" y="342" width="76" height="20" rx="10" fill="rgba(16,48,107,0.07)" stroke="rgba(16,48,107,0.10)" stroke-width="1"/>
+      <text x="791" y="355.5" font-size="9" font-weight="600" fill="#10306B" text-anchor="middle" font-variant-numeric="tabular-nums">200–350 mL/min</text>
+    </g>
+    <g>
+      <circle cx="864" cy="352" r="6" fill="#DA4A54"/>
+      <text x="876" y="355.5" font-size="9" font-weight="600" fill="#DA4A54">Highest risk</text>
+    </g>
+    <g>
+      <rect x="726" y="374" width="178" height="18" rx="9" fill="rgba(227,154,59,0.12)" stroke="#E39A3B" stroke-width="1" stroke-dasharray="3 3"/>
+      <text x="815" y="386.5" font-size="8" font-weight="600" fill="#E39A3B" text-anchor="middle">IFU-pending · immediate use</text>
+    </g>
+  </g>
+
+  <!-- ================= SHARED LEGEND ================= -->
+  <g>
+    <line x1="40" y1="404" x2="1080" y2="404" stroke="rgba(16,48,107,0.08)" stroke-width="1"/>
+    <circle cx="56" cy="422" r="6" fill="#F6C77F" stroke="#E39A3B" stroke-width="1.5"/>
+    <text x="68" y="425.5" font-size="8.5" fill="#55616E">Artery</text>
+    <circle cx="140" cy="422" r="6" fill="#9BC0F2" stroke="#1C75BC" stroke-width="1.5"/>
+    <text x="152" y="425.5" font-size="8.5" fill="#55616E">Vein</text>
+    <circle cx="216" cy="422" r="6" fill="#D7DEE5" stroke="#55616E" stroke-width="1.5"/>
+    <text x="228" y="425.5" font-size="8.5" fill="#55616E">Synthetic graft</text>
+    <line x1="340" y1="422" x2="356" y2="422" stroke="#10306B" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="356" cy="422" r="2.6" fill="#10306B"/>
+    <text x="362" y="425.5" font-size="8.5" fill="#55616E">Dialysis needle site</text>
+    <circle cx="512" cy="422" r="5" fill="#2E8E54"/>
+    <text x="522" y="425.5" font-size="8.5" fill="#55616E">In-range / preferred</text>
+    <circle cx="664" cy="422" r="5" fill="#E39A3B"/>
+    <text x="674" y="425.5" font-size="8.5" fill="#55616E">Caution</text>
+    <circle cx="754" cy="422" r="5" fill="#DA4A54"/>
+    <text x="764" y="425.5" font-size="8.5" fill="#55616E">Highest risk</text>
+    <text x="1040" y="420" font-size="7.5" fill="#8A95A1" text-anchor="end">Flow ranges are typical clinical ranges, not device-specific claims.</text>
+  </g>
+</svg>

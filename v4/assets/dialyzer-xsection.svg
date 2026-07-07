@@ -1,0 +1,288 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" width="960" height="620" role="img"
+     aria-labelledby="dialyzer-xsection-title dialyzer-xsection-desc" font-family="General Sans, system-ui, sans-serif">
+  <title id="dialyzer-xsection-title">Hemodialyzer counter-current cross-section</title>
+  <desc id="dialyzer-xsection-desc">Longitudinal cutaway of a hollow-fibre hemodialyzer. A cylindrical casing holds a bundle of many hollow fibres potted at each end. Blood enters the left header, travels through the fibre lumens to the right header (Qb 400 mL/min). Dialysate fills the casing around the fibres and flows in the opposite direction, right to left (Qd 500 mL/min), maintaining a counter-current concentration gradient. A magnified call-out shows one fibre wall as a semipermeable membrane: small solutes such as urea cross by diffusion, middle molecules cross by convection, and large proteins and blood cells are retained. Citation status: IFU-pending.</desc>
+
+  <defs>
+    <linearGradient id="casingTube" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.18" stop-color="#F7F9FB"/>
+      <stop offset="0.55" stop-color="#EAF0F5"/>
+      <stop offset="1" stop-color="#D8E1E9"/>
+    </linearGradient>
+    <linearGradient id="dialysateWash" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C4E8B4" stop-opacity="0.5"/>
+      <stop offset="0.55" stop-color="#A9CDF0" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#8FB4E4" stop-opacity="0.5"/>
+    </linearGradient>
+    <radialGradient id="calloutBg" cx="0.38" cy="0.32" r="0.8">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#EDF2F5"/>
+    </radialGradient>
+    <clipPath id="casingClip">
+      <rect x="176" y="172" width="500" height="140" rx="10"/>
+    </clipPath>
+    <marker id="arrowBlue" markerWidth="9" markerHeight="9" refX="4.5" refY="4.5" orient="auto">
+      <path d="M0,0.5 L9,4.5 L0,8.5 Z" fill="#5D8AD4"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="9" markerHeight="9" refX="4.5" refY="4.5" orient="auto">
+      <path d="M9,0.5 L0,4.5 L9,8.5 Z" fill="#2E8E54"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="960" height="620" fill="#E8ECEF"/>
+  <rect x="8" y="8" width="944" height="604" rx="14" fill="#FFFFFF" stroke="rgba(16,48,107,0.08)" stroke-width="1.5"/>
+
+  <text x="480" y="38" font-size="16" font-weight="700" fill="#10306B" text-anchor="middle">Hemodialyzer — counter-current cross-section</text>
+  <text x="480" y="57" font-size="11.5" font-weight="400" fill="#55616E" text-anchor="middle">Blood and dialysate flow in opposite directions through the fibre bundle, keeping the diffusion gradient maximal along the whole fibre length.</text>
+
+  <!-- Honesty chip -->
+  <g>
+    <rect x="828" y="24" width="98" height="20" rx="10" fill="rgba(227,154,59,0.14)" stroke="#E39A3B" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="877" y="37.5" font-size="9.5" font-weight="600" fill="#E39A3B" text-anchor="middle" letter-spacing="0.01em">IFU-pending</text>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- MAIN LONGITUDINAL CUTAWAY                                      -->
+  <!-- ============================================================ -->
+  <g>
+    <!-- Counter-current flow arrows, framing the barrel directly above/below the fibre level -->
+    <line x1="108" y1="150" x2="640" y2="150" stroke="#5D8AD4" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrowBlue)"/>
+    <text x="374" y="142" font-size="11" font-weight="700" fill="#5D8AD4" text-anchor="middle">Blood flow →</text>
+
+    <line x1="640" y1="336" x2="108" y2="336" stroke="#2E8E54" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrowGreen)"/>
+    <text x="374" y="352" font-size="11" font-weight="700" fill="#1C4D2E" text-anchor="middle">← Dialysate flow (counter-current)</text>
+
+    <!-- Outer cylindrical casing shell -->
+    <rect x="176" y="172" width="500" height="140" rx="14" fill="url(#casingTube)" stroke="#10306B" stroke-width="2.5"/>
+    <!-- barrel highlight to sell cylindrical form -->
+    <rect x="184" y="180" width="484" height="14" rx="7" fill="#FFFFFF" opacity="0.55"/>
+    <!-- casing end caps (ellipse silhouette reads as a cylinder) -->
+    <ellipse cx="176" cy="242" rx="15" ry="70" fill="#EEF2F5" stroke="#10306B" stroke-width="2.25"/>
+    <ellipse cx="676" cy="242" rx="15" ry="70" fill="#EEF2F5" stroke="#10306B" stroke-width="2.25"/>
+
+    <!-- Dialysate compartment: the space around the fibres, inside the casing -->
+    <rect x="191" y="172" width="470" height="140" fill="url(#dialysateWash)" clip-path="url(#casingClip)"/>
+
+    <!-- Header manifolds (blood in / blood out), potted ends -->
+    <path d="M96,242 C96,204 126,188 176,188 L176,296 C126,296 96,280 96,242 Z" fill="#DCE6F6" stroke="#10306B" stroke-width="2.5"/>
+    <path d="M756,242 C756,204 726,188 676,188 L676,296 C726,296 756,280 756,242 Z" fill="#DCE6F6" stroke="#10306B" stroke-width="2.5"/>
+
+    <!-- Blood port stubs -->
+    <rect x="58" y="227" width="40" height="30" rx="6" fill="#5D8AD4" stroke="#10306B" stroke-width="1.5"/>
+    <rect x="754" y="227" width="40" height="30" rx="6" fill="#5D8AD4" stroke="#10306B" stroke-width="1.5"/>
+
+    <!-- Dialysate port stubs: inlet plugged into top-right of casing, outlet at bottom-left -->
+    <rect x="628" y="150" width="24" height="26" rx="4" fill="#8FB4E4" stroke="#10306B" stroke-width="1.5"/>
+    <rect x="200" y="308" width="24" height="26" rx="4" fill="#8FB4E4" stroke="#10306B" stroke-width="1.5"/>
+
+    <!-- Potting resin bands (fibres embedded at each end) -->
+    <rect x="176" y="174" width="9" height="136" fill="#C7D2DD" stroke="#10306B" stroke-width="1" opacity="0.9"/>
+    <rect x="667" y="174" width="9" height="136" fill="#C7D2DD" stroke="#10306B" stroke-width="1" opacity="0.9"/>
+
+    <!-- FIBRE BUNDLE: many discrete hollow fibres, drawn as double-wall tubes with visible lumen -->
+    <g clip-path="url(#casingClip)">
+      <!--
+        data-mirror="flow" holds direction-bearing marks (fibre bundle, motion dots).
+        In an RTL build this group takes transform="translate(960,0) scale(-1,1)"; all text stays
+        outside this group so glyphs never flip.
+      -->
+      <g data-mirror="flow" id="fibreBundle">
+        <!-- 11 fibres, each a filled lumen band with darker wall strokes top+bottom, clearly discrete tubes -->
+        <g>
+          <!-- fibre 1 -->
+          <rect x="176" y="176" width="500" height="7" fill="#C9DAF0"/>
+          <line x1="176" y1="176" x2="676" y2="176" stroke="#8FA6C4" stroke-width="1.25"/>
+          <line x1="176" y1="183" x2="676" y2="183" stroke="#8FA6C4" stroke-width="1.25"/>
+          <!-- fibre 2 -->
+          <rect x="176" y="188" width="500" height="7" fill="#C9DAF0"/>
+          <line x1="176" y1="188" x2="676" y2="188" stroke="#8FA6C4" stroke-width="1.25"/>
+          <line x1="176" y1="195" x2="676" y2="195" stroke="#8FA6C4" stroke-width="1.25"/>
+          <!-- fibre 3 -->
+          <rect x="176" y="200" width="500" height="7" fill="#C9DAF0"/>
+          <line x1="176" y1="200" x2="676" y2="200" stroke="#8FA6C4" stroke-width="1.25"/>
+          <line x1="176" y1="207" x2="676" y2="207" stroke="#8FA6C4" stroke-width="1.25"/>
+          <!-- fibre 4 -->
+          <rect x="176" y="212" width="500" height="7" fill="#C9DAF0"/>
+          <line x1="176" y1="212" x2="676" y2="212" stroke="#8FA6C4" stroke-width="1.25"/>
+          <line x1="176" y1="219" x2="676" y2="219" stroke="#8FA6C4" stroke-width="1.25"/>
+          <!-- fibre 5 -->
+          <rect x="176" y="224" width="500" height="7" fill="#C9DAF0"/>
+          <line x1="176" y1="224" x2="676" y2="224" stroke="#8FA6C4" stroke-width="1.25"/>
+          <line x1="176" y1="231" x2="676" y2="231" stroke="#8FA6C4" stroke-width="1.25"/>
+          <!-- fibre 6 (center) -->
+          <rect x="176" y="236" width="500" height="7" fill="#C9DAF0"/>
+          <line x1="176" y1="236" x2="676" y2="236" stroke="#8FA6C4" stroke-width="1.25"/>
+          <line x1="176" y1="243" x2="676" y2="243" stroke="#8FA6C4" stroke-width="1.25"/>
+          <!-- fibre 7 -->
+          <rect x="176" y="248" width="500" height="7" fill="#C9DAF0"/>
+          <line x1="176" y1="248" x2="676" y2="248" stroke="#8FA6C4" stroke-width="1.25"/>
+          <line x1="176" y1="255" x2="676" y2="255" stroke="#8FA6C4" stroke-width="1.25"/>
+          <!-- fibre 8 -->
+          <rect x="176" y="260" width="500" height="7" fill="#C9DAF0"/>
+          <line x1="176" y1="260" x2="676" y2="260" stroke="#8FA6C4" stroke-width="1.25"/>
+          <line x1="176" y1="267" x2="676" y2="267" stroke="#8FA6C4" stroke-width="1.25"/>
+          <!-- fibre 9 -->
+          <rect x="176" y="272" width="500" height="7" fill="#C9DAF0"/>
+          <line x1="176" y1="272" x2="676" y2="272" stroke="#8FA6C4" stroke-width="1.25"/>
+          <line x1="176" y1="279" x2="676" y2="279" stroke="#8FA6C4" stroke-width="1.25"/>
+          <!-- fibre 10 -->
+          <rect x="176" y="284" width="500" height="7" fill="#C9DAF0"/>
+          <line x1="176" y1="284" x2="676" y2="284" stroke="#8FA6C4" stroke-width="1.25"/>
+          <line x1="176" y1="291" x2="676" y2="291" stroke="#8FA6C4" stroke-width="1.25"/>
+          <!-- fibre 11 -->
+          <rect x="176" y="296" width="500" height="7" fill="#C9DAF0"/>
+          <line x1="176" y1="296" x2="676" y2="296" stroke="#8FA6C4" stroke-width="1.25"/>
+          <line x1="176" y1="303" x2="676" y2="303" stroke="#8FA6C4" stroke-width="1.25"/>
+        </g>
+
+        <!-- blood motion dots inside lumens: left -> right, staggered so they read as travelling, not static rows -->
+        <g fill="#1C75BC">
+          <circle cx="250" cy="179.5" r="2.4"/><circle cx="360" cy="179.5" r="2.4"/><circle cx="470" cy="179.5" r="2.4"/><circle cx="580" cy="179.5" r="2.4"/>
+          <circle cx="290" cy="203.5" r="2.4"/><circle cx="400" cy="203.5" r="2.4"/><circle cx="510" cy="203.5" r="2.4"/><circle cx="620" cy="203.5" r="2.4"/>
+          <circle cx="230" cy="227.5" r="2.4"/><circle cx="340" cy="227.5" r="2.4"/><circle cx="450" cy="227.5" r="2.4"/><circle cx="560" cy="227.5" r="2.4"/>
+          <circle cx="270" cy="239.5" r="2.4"/><circle cx="380" cy="239.5" r="2.4"/><circle cx="490" cy="239.5" r="2.4"/><circle cx="600" cy="239.5" r="2.4"/>
+          <circle cx="310" cy="263.5" r="2.4"/><circle cx="420" cy="263.5" r="2.4"/><circle cx="530" cy="263.5" r="2.4"/><circle cx="640" cy="263.5" r="2.4"/>
+          <circle cx="250" cy="287.5" r="2.4"/><circle cx="360" cy="287.5" r="2.4"/><circle cx="470" cy="287.5" r="2.4"/><circle cx="580" cy="287.5" r="2.4"/>
+          <circle cx="290" cy="299.5" r="2.4"/><circle cx="400" cy="299.5" r="2.4"/><circle cx="510" cy="299.5" r="2.4"/>
+        </g>
+
+        <!-- dialysate motion dots in the interstitial space around fibres: right -> left, sit at fibre-wall seams -->
+        <g fill="#2E8E54">
+          <circle cx="560" cy="185.5" r="2"/><circle cx="460" cy="185.5" r="2"/><circle cx="360" cy="185.5" r="2"/><circle cx="260" cy="185.5" r="2"/>
+          <circle cx="600" cy="197.5" r="2"/><circle cx="500" cy="197.5" r="2"/><circle cx="400" cy="197.5" r="2"/><circle cx="300" cy="197.5" r="2"/>
+          <circle cx="540" cy="221.5" r="2"/><circle cx="440" cy="221.5" r="2"/><circle cx="340" cy="221.5" r="2"/><circle cx="240" cy="221.5" r="2"/>
+          <circle cx="620" cy="245.5" r="2"/><circle cx="520" cy="245.5" r="2"/><circle cx="420" cy="245.5" r="2"/><circle cx="320" cy="245.5" r="2"/>
+          <circle cx="580" cy="269.5" r="2"/><circle cx="480" cy="269.5" r="2"/><circle cx="380" cy="269.5" r="2"/><circle cx="280" cy="269.5" r="2"/>
+          <circle cx="560" cy="293.5" r="2"/><circle cx="460" cy="293.5" r="2"/><circle cx="360" cy="293.5" r="2"/><circle cx="260" cy="293.5" r="2"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Bundle cut-end roundel (left potted face): field of tiny fibre circles proves "many discrete tubes" -->
+    <g transform="translate(176,242)">
+      <circle r="36" fill="#F3F6F8" stroke="#10306B" stroke-width="2"/>
+      <g fill="#DCE6F6" stroke="#5D8AD4" stroke-width="1">
+        <circle cx="0" cy="0" r="4.8"/>
+        <circle cx="10.5" cy="-4" r="4.8"/><circle cx="-10.5" cy="-4" r="4.8"/><circle cx="10.5" cy="6.5" r="4.8"/><circle cx="-10.5" cy="6.5" r="4.8"/>
+        <circle cx="0" cy="-11.5" r="4.8"/><circle cx="0" cy="12.5" r="4.8"/>
+        <circle cx="19" cy="1" r="4.8"/><circle cx="-19" cy="1" r="4.8"/>
+        <circle cx="14.5" cy="-15" r="4.8"/><circle cx="-14.5" cy="-15" r="4.8"/><circle cx="14.5" cy="16" r="4.8"/><circle cx="-14.5" cy="16" r="4.8"/>
+        <circle cx="-3" cy="-21" r="3.8"/><circle cx="8" cy="-21" r="3.8"/><circle cx="-14" cy="-21" r="3.8"/>
+        <circle cx="-3" cy="22" r="3.8"/><circle cx="8" cy="22" r="3.8"/><circle cx="-14" cy="22" r="3.8"/>
+        <circle cx="24" cy="-9" r="3.6"/><circle cx="24" cy="10" r="3.6"/>
+        <circle cx="-24" cy="-9" r="3.6"/><circle cx="-24" cy="10" r="3.6"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- LABELS with leader lines (each label sits clear of arrows/chips) -->
+  <!-- ============================================================ -->
+  <g font-size="11" font-weight="600">
+    <!-- Blood in: label above port, chip below port -->
+    <text x="78" y="196" fill="#10306B" text-anchor="middle">Blood in</text>
+    <line x1="78" y1="200" x2="78" y2="224" stroke="#55616E" stroke-width="1"/>
+    <line x1="78" y1="260" x2="78" y2="272" stroke="#55616E" stroke-width="1"/>
+
+    <!-- Blood out -->
+    <text x="774" y="196" fill="#10306B" text-anchor="middle">Blood out</text>
+    <line x1="774" y1="200" x2="774" y2="224" stroke="#55616E" stroke-width="1"/>
+
+    <!-- Dialysate in -->
+    <text x="640" y="120" fill="#1C4D2E" text-anchor="middle">Dialysate in</text>
+    <line x1="640" y1="124" x2="640" y2="148" stroke="#55616E" stroke-width="1"/>
+
+    <!-- Dialysate out -->
+    <text x="212" y="398" fill="#1C4D2E" text-anchor="middle">Dialysate out</text>
+    <line x1="212" y1="360" x2="212" y2="334" stroke="#55616E" stroke-width="1"/>
+
+    <!-- Fibre bundle label, leader into the casing top -->
+    <text x="426" y="404" fill="#10306B" text-anchor="middle" font-size="11.5">Hollow-fibre bundle</text>
+    <text x="426" y="418" fill="#55616E" text-anchor="middle" font-size="9.5" font-weight="500">(~10,000–15,000 fibres per dialyzer)</text>
+    <path d="M426,400 C426,370 400,340 380,313" fill="none" stroke="#10306B" stroke-width="1.25" stroke-dasharray="3 3"/>
+    <circle cx="378" cy="309" r="3" fill="#10306B"/>
+
+    <!-- bundle cut-end roundel label: sits in open whitespace above the roundel, clear of the
+         blood-flow arrow (y=150) and the roundel itself (top edge at y=206) -->
+    <text x="176" y="167" fill="#55616E" text-anchor="middle" font-size="9" font-weight="500">potted fibre-end (cut view)</text>
+    <line x1="176" y1="171" x2="176" y2="205" stroke="#55616E" stroke-width="1" stroke-dasharray="2 3"/>
+
+    <!-- Dialysate compartment label, placed low and clear of fibre stripes -->
+    <text x="480" y="416" fill="#1C4D2E" text-anchor="middle" font-size="10" font-weight="600" opacity="0.001">.</text>
+  </g>
+
+  <!-- Qb / Qd stat chips, offset from labels so nothing overlaps -->
+  <g>
+    <rect x="44" y="272" width="68" height="20" rx="10" fill="rgba(93,138,212,0.14)" stroke="rgba(16,48,107,0.16)" stroke-width="1"/>
+    <text x="78" y="285.5" font-size="9.5" font-weight="700" fill="#10306B" text-anchor="middle" letter-spacing="0.01em" font-variant-numeric="tabular-nums">Qb 400</text>
+  </g>
+  <g>
+    <rect x="178" y="368" width="72" height="20" rx="10" fill="rgba(46,142,84,0.12)" stroke="rgba(46,142,84,0.30)" stroke-width="1"/>
+    <text x="214" y="381.5" font-size="9.5" font-weight="700" fill="#1C4D2E" text-anchor="middle" letter-spacing="0.01em" font-variant-numeric="tabular-nums">Qd 500</text>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- MAGNIFIED CALL-OUT: one fibre wall as a semipermeable membrane -->
+  <!-- ============================================================ -->
+  <g>
+    <!-- leader from bundle centre to magnifier, routed clear of the flow arrows and dialysate-out label -->
+    <path d="M480,313 C560,360 620,400 668,432" fill="none" stroke="#10306B" stroke-width="1.25" stroke-dasharray="3 3"/>
+    <circle cx="480" cy="311" r="3" fill="#10306B"/>
+
+    <circle cx="748" cy="482" r="150" fill="url(#calloutBg)" stroke="#10306B" stroke-width="2.5"/>
+    <circle cx="748" cy="482" r="150" fill="none" stroke="#FFFFFF" stroke-width="5" opacity="0.55"/>
+
+    <text x="748" y="352" font-size="12.5" font-weight="700" fill="#10306B" text-anchor="middle">Membrane close-up — one fibre wall</text>
+
+    <!-- membrane cross-section inside the loupe: blood lumen (left) | membrane (middle) | dialysate (right) -->
+    <g>
+      <rect x="638" y="422" width="66" height="112" fill="#DCE6F6"/>
+      <rect x="704" y="422" width="20" height="112" fill="#EEF2F5" stroke="#10306B" stroke-width="1.5" stroke-dasharray="3 3"/>
+      <rect x="724" y="422" width="100" height="112" fill="url(#dialysateWash)"/>
+
+      <text x="671" y="414" font-size="9.5" font-weight="700" fill="#10306B" text-anchor="middle">blood lumen</text>
+      <text x="714" y="414" font-size="8" font-weight="700" fill="#55616E" text-anchor="middle" transform="rotate(-90 714 414)"> </text>
+      <text x="774" y="414" font-size="9.5" font-weight="700" fill="#1C4D2E" text-anchor="middle">dialysate</text>
+      <text x="714" y="551" font-size="8.5" font-weight="700" fill="#55616E" text-anchor="middle">membrane</text>
+      <line x1="714" y1="537" x2="714" y2="534" stroke="#55616E" stroke-width="1"/>
+
+      <!-- pores as small gaps/circles on the membrane -->
+      <g>
+        <circle cx="714" cy="443" r="3.2" fill="#FFFFFF" stroke="#10306B" stroke-width="1"/>
+        <circle cx="714" cy="478" r="3.2" fill="#FFFFFF" stroke="#10306B" stroke-width="1"/>
+        <circle cx="714" cy="513" r="3.2" fill="#FFFFFF" stroke="#10306B" stroke-width="1"/>
+      </g>
+
+      <!-- urea: small solute, crosses by diffusion (small dot passing straight through) -->
+      <circle cx="668" cy="443" r="3.2" fill="#5D8AD4"/>
+      <circle cx="748" cy="440" r="3.2" fill="#5D8AD4"/>
+      <circle cx="772" cy="437" r="3.2" fill="#5D8AD4"/>
+      <line x1="678" y1="443" x2="710" y2="443" stroke="#5D8AD4" stroke-width="1.5" stroke-dasharray="2 2" marker-end="url(#arrowBlue)"/>
+
+      <!-- middle molecule: crosses by convection (dragged with fluid, slightly larger, curved arrow) -->
+      <circle cx="666" cy="478" r="5.5" fill="#9BC0F2" stroke="#1C75BC" stroke-width="1.25"/>
+      <circle cx="774" cy="475" r="5.5" fill="#9BC0F2" stroke="#1C75BC" stroke-width="1.25"/>
+      <path d="M678,478 C690,470 698,486 710,478" fill="none" stroke="#1C75BC" stroke-width="1.5" marker-end="url(#arrowBlue)"/>
+
+      <!-- large protein / cell: retained, blocked at the wall -->
+      <circle cx="666" cy="513" r="9" fill="#5D8AD4" opacity="0.92"/>
+      <circle cx="666" cy="513" r="9" fill="none" stroke="#10306B" stroke-width="1"/>
+      <circle cx="700" cy="513" r="8" fill="none" stroke="#DA4A54" stroke-width="2"/>
+      <line x1="694" y1="507" x2="706" y2="519" stroke="#DA4A54" stroke-width="2" stroke-linecap="round"/>
+      <line x1="706" y1="507" x2="694" y2="519" stroke="#DA4A54" stroke-width="2" stroke-linecap="round"/>
+    </g>
+
+    <!-- legend for the call-out, spaced out and colour-differentiated -->
+    <g font-size="9.5" font-weight="600">
+      <circle cx="628" cy="576" r="3.6" fill="#5D8AD4"/>
+      <text x="638" y="579.5" fill="#10306B">Urea (small solute) — diffusion</text>
+
+      <circle cx="628" cy="594" r="4.8" fill="#9BC0F2" stroke="#1C75BC" stroke-width="1.25"/>
+      <text x="638" y="597.5" fill="#10306B">Middle molecule — convection</text>
+
+      <circle cx="628" cy="612" r="6.2" fill="#5D8AD4" stroke="#10306B" stroke-width="1"/>
+      <text x="638" y="615.5" fill="#10306B">Protein / blood cell — retained</text>
+    </g>
+  </g>
+</svg>

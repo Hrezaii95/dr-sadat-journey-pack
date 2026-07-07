@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" role="img" font-family='system-ui, Segoe UI, Roboto, Arial, sans-serif'>
+<title>Platform connection map — Tiers A · B · C</title>
+<desc>Platform connection map — a real node-edge topological graph. Tier A (six competencies C1–C6), Tier B (six navigation routes), Tier C (eight assessment nodes), with prerequisite, practice, and assessment edges. Status colors: real, stub, planned, legacy, redirect.</desc>
+<defs></defs>
+<rect x="0" y="0" width="1120" height="600" fill="#FFFFFF"/>
+<text x="560" y="30" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="13" font-weight="600" fill="#10306B" text-anchor="middle">Platform connection map — Tiers A · B · C</text>
+<text x="80" y="46" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="10.5" font-weight="600" fill="#8A95A1" text-anchor="middle" letter-spacing="0.11em" style="text-transform:uppercase">Tier A</text>
+<text x="560" y="46" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="10.5" font-weight="600" fill="#8A95A1" text-anchor="middle" letter-spacing="0.11em" style="text-transform:uppercase">Tier B</text>
+<text x="1040" y="46" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="10.5" font-weight="600" fill="#8A95A1" text-anchor="middle" letter-spacing="0.11em" style="text-transform:uppercase">Tier C</text>
+<g>
+<path d="M80 90 V170" stroke="#10306B" stroke-width="2" fill="none" opacity="0.75"/>
+<path d="M80 90 V490" stroke="#10306B" stroke-width="2" fill="none" opacity="0.75"/>
+<path d="M80 170 V250" stroke="#10306B" stroke-width="2" fill="none" opacity="0.75"/>
+<path d="M80 90 V330" stroke="#10306B" stroke-width="2" fill="none" opacity="0.75"/>
+<path d="M80 250 V330" stroke="#10306B" stroke-width="2" fill="none" opacity="0.75"/>
+<path d="M80 250 V410" stroke="#10306B" stroke-width="2" fill="none" opacity="0.75"/>
+<path d="M80 90 H320 V330 H560" stroke="#5D8AD4" stroke-width="1.5" fill="none" opacity="0.75"/>
+<path d="M80 170 H320 V330 H560" stroke="#5D8AD4" stroke-width="1.5" fill="none" opacity="0.75"/>
+<path d="M560 170 H320 V90 H80" stroke="#10306B" stroke-width="2" fill="none" opacity="0.75"/>
+<path d="M560 170 H80" stroke="#10306B" stroke-width="2" fill="none" opacity="0.75"/>
+<path d="M560 170 H320 V250 H80" stroke="#10306B" stroke-width="2" fill="none" opacity="0.75"/>
+<path d="M560 170 H320 V330 H80" stroke="#10306B" stroke-width="2" fill="none" opacity="0.75"/>
+<path d="M560 170 H320 V410 H80" stroke="#10306B" stroke-width="2" fill="none" opacity="0.75"/>
+<path d="M560 170 H320 V490 H80" stroke="#10306B" stroke-width="2" fill="none" opacity="0.75"/>
+<path d="M560 90 V170" stroke="#10306B" stroke-width="2" fill="none" opacity="0.75"/>
+<path d="M560 250 H320 V90 H80" stroke="#10306B" stroke-width="2" fill="none" opacity="0.75"/>
+<path d="M560 250 H320 V170 H80" stroke="#10306B" stroke-width="2" fill="none" opacity="0.75"/>
+<path d="M560 250 H80" stroke="#10306B" stroke-width="2" fill="none" opacity="0.75"/>
+<path d="M560 250 H320 V330 H80" stroke="#10306B" stroke-width="2" fill="none" opacity="0.75"/>
+<path d="M560 250 H320 V410 H80" stroke="#10306B" stroke-width="2" fill="none" opacity="0.75"/>
+<path d="M560 250 H320 V490 H80" stroke="#10306B" stroke-width="2" fill="none" opacity="0.75"/>
+<path d="M80 90 H1040" stroke="#9BC0F2" stroke-width="1.25" stroke-dasharray="3 3" fill="none" opacity="0.75"/>
+<path d="M80 170 H560 V90 H1040" stroke="#9BC0F2" stroke-width="1.25" stroke-dasharray="3 3" fill="none" opacity="0.75"/>
+<path d="M80 250 H560 V90 H1040" stroke="#9BC0F2" stroke-width="1.25" stroke-dasharray="3 3" fill="none" opacity="0.75"/>
+<path d="M80 330 H560 V90 H1040" stroke="#9BC0F2" stroke-width="1.25" stroke-dasharray="3 3" fill="none" opacity="0.75"/>
+<path d="M80 410 H560 V90 H1040" stroke="#9BC0F2" stroke-width="1.25" stroke-dasharray="3 3" fill="none" opacity="0.75"/>
+<path d="M80 490 H560 V90 H1040" stroke="#9BC0F2" stroke-width="1.25" stroke-dasharray="3 3" fill="none" opacity="0.75"/>
+<path d="M80 90 H560 V147.14285714285714 H1040" stroke="#9BC0F2" stroke-width="1.25" stroke-dasharray="3 3" fill="none" opacity="0.75"/>
+<path d="M80 170 H560 V147.14285714285714 H1040" stroke="#9BC0F2" stroke-width="1.25" stroke-dasharray="3 3" fill="none" opacity="0.75"/>
+<path d="M80 250 H560 V147.14285714285714 H1040" stroke="#9BC0F2" stroke-width="1.25" stroke-dasharray="3 3" fill="none" opacity="0.75"/>
+<path d="M80 330 H560 V147.14285714285714 H1040" stroke="#9BC0F2" stroke-width="1.25" stroke-dasharray="3 3" fill="none" opacity="0.75"/>
+<path d="M80 410 H560 V147.14285714285714 H1040" stroke="#9BC0F2" stroke-width="1.25" stroke-dasharray="3 3" fill="none" opacity="0.75"/>
+<path d="M80 490 H560 V147.14285714285714 H1040" stroke="#9BC0F2" stroke-width="1.25" stroke-dasharray="3 3" fill="none" opacity="0.75"/>
+<path d="M80 90 H560 V204.28571428571428 H1040" stroke="#9BC0F2" stroke-width="1.25" stroke-dasharray="3 3" fill="none" opacity="0.75"/>
+<path d="M80 170 H560 V204.28571428571428 H1040" stroke="#9BC0F2" stroke-width="1.25" stroke-dasharray="3 3" fill="none" opacity="0.75"/>
+<path d="M80 250 H560 V204.28571428571428 H1040" stroke="#9BC0F2" stroke-width="1.25" stroke-dasharray="3 3" fill="none" opacity="0.75"/>
+<path d="M80 330 H560 V204.28571428571428 H1040" stroke="#9BC0F2" stroke-width="1.25" stroke-dasharray="3 3" fill="none" opacity="0.75"/>
+<path d="M80 410 H560 V204.28571428571428 H1040" stroke="#9BC0F2" stroke-width="1.25" stroke-dasharray="3 3" fill="none" opacity="0.75"/>
+<path d="M80 490 H560 V204.28571428571428 H1040" stroke="#9BC0F2" stroke-width="1.25" stroke-dasharray="3 3" fill="none" opacity="0.75"/>
+<path d="M80 410 H560 V261.42857142857144 H1040" stroke="#9BC0F2" stroke-width="1.25" stroke-dasharray="3 3" fill="none" opacity="0.75"/>
+<path d="M80 410 H560 V318.57142857142856 H1040" stroke="#9BC0F2" stroke-width="1.25" stroke-dasharray="3 3" fill="none" opacity="0.75"/>
+<path d="M80 410 H560 V375.7142857142857 H1040" stroke="#9BC0F2" stroke-width="1.25" stroke-dasharray="3 3" fill="none" opacity="0.75"/>
+<path d="M80 410 H560 V432.8571428571429 H1040" stroke="#9BC0F2" stroke-width="1.25" stroke-dasharray="3 3" fill="none" opacity="0.75"/>
+<path d="M80 250 H560 V490 H1040" stroke="#9BC0F2" stroke-width="1.25" stroke-dasharray="3 3" fill="none" opacity="0.75"/>
+</g>
+<g>
+<circle cx="80" cy="90" r="15" fill="rgba(108,203,62,0.14)" stroke="#6CCB3E" stroke-width="1.75"/>
+<circle cx="80" cy="90" r="3.5" fill="#6CCB3E"/>
+<text x="80" y="118" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9" font-weight="700" fill="#55616E" text-anchor="middle">Understand the therapy</text>
+</g>
+<g>
+<circle cx="80" cy="170" r="15" fill="rgba(227,154,59,0.14)" stroke="#E39A3B" stroke-width="1.75"/>
+<circle cx="80" cy="170" r="3.5" fill="#E39A3B"/>
+<text x="80" y="198" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9" font-weight="700" fill="#55616E" text-anchor="middle">Vascular access &amp; cannulation</text>
+</g>
+<g>
+<circle cx="80" cy="250" r="15" fill="rgba(108,203,62,0.14)" stroke="#6CCB3E" stroke-width="1.75"/>
+<circle cx="80" cy="250" r="3.5" fill="#6CCB3E"/>
+<text x="80" y="278" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9" font-weight="700" fill="#55616E" text-anchor="middle">Operate the 5008 for online-HDF</text>
+</g>
+<g>
+<circle cx="80" cy="330" r="15" fill="rgba(93,138,212,0.14)" stroke="#5D8AD4" stroke-width="1.75"/>
+<circle cx="80" cy="330" r="3.5" fill="#5D8AD4"/>
+<text x="80" y="358" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9" font-weight="700" fill="#55616E" text-anchor="middle">Deliver HDF Rx + water safety</text>
+</g>
+<g>
+<circle cx="80" cy="410" r="15" fill="rgba(108,203,62,0.14)" stroke="#6CCB3E" stroke-width="1.75"/>
+<circle cx="80" cy="410" r="3.5" fill="#6CCB3E"/>
+<text x="80" y="438" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9" font-weight="700" fill="#55616E" text-anchor="middle">Monitor adequacy &amp; complications</text>
+</g>
+<g>
+<circle cx="80" cy="490" r="15" fill="rgba(108,203,62,0.14)" stroke="#6CCB3E" stroke-width="1.75"/>
+<circle cx="80" cy="490" r="3.5" fill="#6CCB3E"/>
+<text x="80" y="518" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9" font-weight="700" fill="#55616E" text-anchor="middle">Know the evidence</text>
+</g>
+<g>
+<circle cx="560" cy="90" r="15" fill="rgba(108,203,62,0.14)" stroke="#6CCB3E" stroke-width="1.75"/>
+<circle cx="560" cy="90" r="3.5" fill="#6CCB3E"/>
+<text x="560" y="118" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9" font-weight="700" fill="#55616E" text-anchor="middle">Home / onboarding</text>
+</g>
+<g>
+<circle cx="560" cy="170" r="15" fill="rgba(108,203,62,0.14)" stroke="#6CCB3E" stroke-width="1.75"/>
+<circle cx="560" cy="170" r="3.5" fill="#6CCB3E"/>
+<text x="560" y="198" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9" font-weight="700" fill="#55616E" text-anchor="middle">My Path (competency spine)</text>
+</g>
+<g>
+<circle cx="560" cy="250" r="15" fill="rgba(108,203,62,0.14)" stroke="#6CCB3E" stroke-width="1.75"/>
+<circle cx="560" cy="250" r="3.5" fill="#6CCB3E"/>
+<text x="560" y="278" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9" font-weight="700" fill="#55616E" text-anchor="middle">Learn hub (per-competency detail, /learn/c1…c6)</text>
+</g>
+<g>
+<circle cx="560" cy="330" r="15" fill="rgba(108,203,62,0.14)" stroke="#6CCB3E" stroke-width="1.75"/>
+<circle cx="560" cy="330" r="3.5" fill="#6CCB3E"/>
+<text x="560" y="358" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9" font-weight="700" fill="#55616E" text-anchor="middle">Simulator (default / no tab — generic practice CTA)</text>
+</g>
+<g>
+<circle cx="560" cy="410" r="15" fill="rgba(108,203,62,0.14)" stroke="#6CCB3E" stroke-width="1.75"/>
+<circle cx="560" cy="410" r="3.5" fill="#6CCB3E"/>
+<text x="560" y="438" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9" font-weight="700" fill="#55616E" text-anchor="middle">5008 Monitor Mastery tab</text>
+</g>
+<g>
+<circle cx="560" cy="490" r="15" fill="rgba(108,203,62,0.14)" stroke="#6CCB3E" stroke-width="1.75"/>
+<circle cx="560" cy="490" r="3.5" fill="#6CCB3E"/>
+<text x="560" y="518" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9" font-weight="700" fill="#55616E" text-anchor="middle">Supervisor dashboard</text>
+</g>
+<g>
+<circle cx="1040" cy="90" r="15" fill="rgba(108,203,62,0.14)" stroke="#6CCB3E" stroke-width="1.75"/>
+<circle cx="1040" cy="90" r="3.5" fill="#6CCB3E"/>
+<text x="1040" y="118" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9" font-weight="700" fill="#55616E" text-anchor="middle">Placement diagnostic (7Q)</text>
+</g>
+<g>
+<circle cx="1040" cy="147.14285714285714" r="15" fill="rgba(108,203,62,0.14)" stroke="#6CCB3E" stroke-width="1.75"/>
+<circle cx="1040" cy="147.14285714285714" r="3.5" fill="#6CCB3E"/>
+<text x="1040" y="175.14285714285714" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9" font-weight="700" fill="#55616E" text-anchor="middle">Credential exam (8Q, ≥80% → certificate)</text>
+</g>
+<g>
+<circle cx="1040" cy="204.28571428571428" r="15" fill="rgba(108,203,62,0.14)" stroke="#6CCB3E" stroke-width="1.75"/>
+<circle cx="1040" cy="204.28571428571428" r="3.5" fill="#6CCB3E"/>
+<text x="1040" y="232.28571428571428" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9" font-weight="700" fill="#55616E" text-anchor="middle">Daily-5 spaced retention (12 cards, all 6 competencies)</text>
+</g>
+<g>
+<circle cx="1040" cy="261.42857142857144" r="15" fill="rgba(108,203,62,0.14)" stroke="#6CCB3E" stroke-width="1.75"/>
+<circle cx="1040" cy="261.42857142857144" r="3.5" fill="#6CCB3E"/>
+<text x="1040" y="289.42857142857144" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9" font-weight="700" fill="#55616E" text-anchor="middle">Case 1 — IDH (full branching, DP1–DP3)</text>
+</g>
+<g>
+<circle cx="1040" cy="318.57142857142856" r="15" fill="rgba(227,154,59,0.14)" stroke="#E39A3B" stroke-width="1.75"/>
+<circle cx="1040" cy="318.57142857142856" r="3.5" fill="#E39A3B"/>
+<text x="1040" y="346.57142857142856" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9" font-weight="700" fill="#55616E" text-anchor="middle">Case 2 — Arrhythmia (stub, DP1 only)</text>
+</g>
+<g>
+<circle cx="1040" cy="375.7142857142857" r="15" fill="rgba(227,154,59,0.14)" stroke="#E39A3B" stroke-width="1.75"/>
+<circle cx="1040" cy="375.7142857142857" r="3.5" fill="#E39A3B"/>
+<text x="1040" y="403.7142857142857" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9" font-weight="700" fill="#55616E" text-anchor="middle">Case 3 — Hyperkalemia (stub, DP1 only)</text>
+</g>
+<g>
+<circle cx="1040" cy="432.8571428571429" r="15" fill="rgba(227,154,59,0.14)" stroke="#E39A3B" stroke-width="1.75"/>
+<circle cx="1040" cy="432.8571428571429" r="3.5" fill="#E39A3B"/>
+<text x="1040" y="460.8571428571429" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9" font-weight="700" fill="#55616E" text-anchor="middle">Case 4 — Metabolic acidosis (stub, DP1 only)</text>
+</g>
+<g>
+<circle cx="1040" cy="490" r="15" fill="rgba(108,203,62,0.14)" stroke="#6CCB3E" stroke-width="1.75"/>
+<circle cx="1040" cy="490" r="3.5" fill="#6CCB3E"/>
+<text x="1040" y="518" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9" font-weight="700" fill="#55616E" text-anchor="middle">Alarm trainer (8 critical alarms, audio + checklist)</text>
+</g>
+<g><circle cx="80" cy="574" r="5" fill="#6CCB3E"/><text x="92" y="578" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9.5" font-weight="600" fill="#55616E" text-anchor="start">real</text>
+<circle cx="210" cy="574" r="5" fill="#E39A3B"/><text x="222" y="578" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9.5" font-weight="600" fill="#55616E" text-anchor="start">stub</text>
+<circle cx="340" cy="574" r="5" fill="#5D8AD4"/><text x="352" y="578" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9.5" font-weight="600" fill="#55616E" text-anchor="start">planned</text>
+<circle cx="470" cy="574" r="5" fill="#8A95A1"/><text x="482" y="578" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9.5" font-weight="600" fill="#55616E" text-anchor="start">legacy</text>
+<circle cx="600" cy="574" r="5" fill="#DA4A54"/><text x="612" y="578" font-family="system-ui, Segoe UI, Roboto, Arial, sans-serif" font-size="9.5" font-weight="600" fill="#55616E" text-anchor="start">redirect</text></g>
+</svg>
