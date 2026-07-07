@@ -1,8 +1,8 @@
-/* Journey pack — Pulse-R tokens (synced design-preview/tokens.css 2026-07-07)
-   Dark default on :root; html.light flips semantic tier only. */
+/* Journey pack — DS v3 tokens (light-first, Pack A + Pack B merge)
+   Default :root = mist canvas; html.dark = navy instrument. */
 
 :root {
-  /* primitives */
+  /* primitives — Pack B */
   --rca-navy-900: #0B1E45;
   --rca-navy-800: #112A5E;
   --rca-navy-700: #10306B;
@@ -21,33 +21,11 @@
   --rca-warning: #E39A3B;
   --rca-blue-400: #5D8AD4;
   --rca-blue-200: #9BC0F2;
+  --rca-ring-blue: #1C75BC;
+  --rca-pulse-green: #1FA26B;
+  --rca-shadow-card: 0 18px 48px -28px rgba(16, 48, 107, 0.18);
 
-  /* semantic — dark (default) */
-  --canvas: var(--rca-navy-900);
-  --surface-1: var(--rca-navy-800);
-  --surface-2: #16336B;
-  --surface-3: var(--rca-navy-600);
-  --line: rgba(255, 255, 255, 0.08);
-  --text: #F2F5FA;
-  --muted: var(--rca-fog);
-  --faint: var(--rca-fog-dim);
-  --accent: var(--rca-blue-200);
-  --accent-bg: rgba(155, 192, 242, 0.16);
-  --teal: var(--rca-blue-200);
-  --teal-bg: rgba(155, 192, 242, 0.15);
-  --gold: var(--rca-warning);
-  --green: var(--rca-success);
-  --amber: var(--rca-warning);
-  --gray: var(--rca-gray);
-  --rose: var(--rca-danger);
-  --navy-report: var(--rca-navy-700);
-  --gold-report: #8A5B12;
-  --primary: #FFFFFF;
-  --on-primary: var(--rca-navy-700);
-  --header-bg: rgba(11, 30, 69, 0.92);
-}
-
-html.light {
+  /* semantic — light (default) */
   --canvas: var(--rca-mist);
   --surface-1: #FFFFFF;
   --surface-2: var(--rca-cloud);
@@ -61,9 +39,36 @@ html.light {
   --teal: var(--rca-navy-700);
   --teal-bg: rgba(16, 48, 107, 0.08);
   --gold: #8A5B12;
+  --green: var(--rca-success);
+  --amber: var(--rca-warning);
+  --gray: var(--rca-gray);
+  --rose: var(--rca-danger);
+  --navy-report: var(--rca-navy-700);
+  --gold-report: #8A5B12;
   --primary: var(--rca-navy-700);
   --on-primary: #FFFFFF;
-  --header-bg: rgba(232, 236, 239, 0.92);
+  --header-bg: rgba(255, 255, 255, 0.92);
+  --card-shadow: var(--rca-shadow-card);
+}
+
+html.dark {
+  --canvas: var(--rca-navy-900);
+  --surface-1: var(--rca-navy-800);
+  --surface-2: #16336B;
+  --surface-3: var(--rca-navy-600);
+  --line: rgba(255, 255, 255, 0.08);
+  --text: #F2F5FA;
+  --muted: var(--rca-fog);
+  --faint: var(--rca-fog-dim);
+  --accent: var(--rca-blue-200);
+  --accent-bg: rgba(155, 192, 242, 0.16);
+  --teal: var(--rca-blue-200);
+  --teal-bg: rgba(155, 192, 242, 0.15);
+  --gold: var(--rca-warning);
+  --primary: #FFFFFF;
+  --on-primary: var(--rca-navy-700);
+  --header-bg: rgba(11, 30, 69, 0.92);
+  --card-shadow: none;
 }
 
 * {
@@ -123,8 +128,39 @@ a:hover {
   font-size: 14px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
+
+.brand img {
+  width: 34px;
+  height: 34px;
+  flex: none;
+}
+
+.brand-lockup {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.brand-lockup .wordmark {
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  color: var(--rca-navy-700);
+}
+
+.brand-lockup .sub {
+  font-size: 7.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--rca-pulse-green);
+  font-weight: 600;
+  margin-top: 3px;
+}
+
+html.dark .brand-lockup .wordmark { color: #FFFFFF; }
+html.dark .brand-lockup .sub { color: var(--rca-lime-400); }
 
 .brand-dot {
   width: 9px;
@@ -242,8 +278,9 @@ section h2 {
 
 .card {
   background: var(--surface-1);
-  border: 1px solid var(--line);
-  border-radius: 14px;
+  border: none;
+  border-radius: var(--rca-radius-card, 28px);
+  box-shadow: var(--card-shadow);
   padding: 18px 20px;
   margin-bottom: 14px;
 }
@@ -393,8 +430,8 @@ section h2 {
   font-weight: 600;
 }
 
-html.light .loop-chip.gate {
-  color: #A32832;
+html.dark .loop-chip.gate {
+  color: #F4B9BE;
 }
 
 /* Pillars */
@@ -459,8 +496,8 @@ table.data td:first-child {
 .cell-real { color: var(--rca-success); font-weight: 600; }
 .cell-panel { color: var(--rca-warning); font-weight: 600; }
 .cell-stub { color: var(--gray); }
-.cell-gate { color: #F4B9BE; font-weight: 600; }
-html.light .cell-gate { color: #A32832; }
+.cell-gate { color: #A32832; font-weight: 600; }
+html.dark .cell-gate { color: #F4B9BE; }
 .cell-cross { color: var(--accent); font-size: 10px; }
 .cell-gap { color: var(--rose); font-weight: 600; }
 .cell-none { color: var(--faint); }
